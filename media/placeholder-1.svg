@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640">
+  <rect width="960" height="640" rx="12" fill="#d9c8b4"/>
+  <rect x="80" y="80" width="800" height="380" rx="8" fill="#f2e9dd"/>
+  <rect x="80" y="500" width="420" height="24" rx="12" fill="#f2e9dd"/>
+  <rect x="80" y="544" width="280" height="24" rx="12" fill="#f2e9dd" opacity="0.6"/>
+  <text x="480" y="285" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#b09b80">Project image 1</text>
+</svg>

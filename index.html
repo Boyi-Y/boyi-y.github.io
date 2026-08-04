@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boyi Yang</title>
+  <meta name="description" content="Boyi Yang — UX design leader.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Apply saved theme before paint to avoid flash
+    (function () {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.dataset.theme = saved;
+    })();
+  </script>
+</head>
+<body>
+  <main>
+    <header class="site-header">
+      <h1 class="logotype">Boyi Yang</h1>
+      <nav class="site-nav" aria-label="Site">
+        <div class="nav-group">
+          <a href="#work">Work</a>
+          <a href="#notes">Notes</a>
+        </div>
+        <div class="nav-group">
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:hello@example.com">Email</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="intro">
+      <p>I'm a UX design leader with 14 years of experience building products and teams. Most recently, I led design for <a href="#">Placeholder Product</a> at <a href="#">Placeholder Company</a>, where we shipped things people love using. Before that, I grew a design team from 3 to 20 while raising the craft bar along the way.</p>
+      <p>I care about the details, about helping teams be more ambitious together, and&nbsp;— most importantly&nbsp;— about having fun through it all.</p>
+    </section>
+
+    <section class="feed" id="work">
+      <article class="entry" data-media="media/placeholder-1.svg">
+        <time>June 2026</time>
+        <h2><a href="#">Project One</a></h2>
+        <p>One or two sentences about what this was, the role you played, and why it mattered. Keep it human and concrete.</p>
+      </article>
+
+      <article class="entry" data-media="media/placeholder-2.svg">
+        <time>March 2026</time>
+        <h2><a href="#">A talk or article</a></h2>
+        <p>Something you shared publicly — a talk, a podcast, an essay. One sentence on what it was about and how it landed.</p>
+      </article>
+
+      <article class="entry" data-media="media/placeholder-3.svg">
+        <time>November 2025</time>
+        <h2><a href="#">Project Two</a></h2>
+        <p>Another project entry. Credit the people you worked with by name — it reads generous and true.</p>
+      </article>
+
+      <article class="entry" data-media="media/placeholder-1.svg">
+        <time>May 2025</time>
+        <h2><a href="#">Team milestone</a></h2>
+        <p>Manager-shaped entries work here too: an org you built, a hiring bar you set, a process you happily killed.</p>
+      </article>
+
+      <article class="entry" data-media="media/placeholder-2.svg">
+        <time>January 2024</time>
+        <h2><a href="#">Project Three</a></h2>
+        <p>Entries can reach back years — the feed is your career told as a story, newest first.</p>
+      </article>
+    </section>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Boyi Yang</p>
+    </footer>
+  </main>
+
+  <!-- Hover media preview -->
+  <div class="media-preview" aria-hidden="true"><img alt=""></div>
+
+  <!-- Theme toggle -->
+  <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"></button>
+
+  <script src="script.js"></script>
+</body>
+</html>
