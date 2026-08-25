@@ -131,7 +131,7 @@ a:hover { text-decoration-color: currentColor; }
 .site-nav a[aria-current="page"] { color: var(--fg-muted); }
 
 /* ---------- Home: hero ---------- */
-.hero { max-width: 760px; margin-bottom: 20px; }
+.hero { max-width: 760px; margin-bottom: 64px; }
 
 .hero-lead {
   font-family: var(--font-display);
