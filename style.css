@@ -61,7 +61,7 @@ body {
 main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 28px 48px 96px;
+  padding: 52px 48px 96px;
 }
 
 a {
@@ -82,7 +82,7 @@ a:hover { text-decoration-color: currentColor; }
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 32px;
+  margin-bottom: 44px;
 }
 
 .logotype {
@@ -131,7 +131,14 @@ a:hover { text-decoration-color: currentColor; }
 .site-nav a[aria-current="page"] { color: var(--fg-muted); }
 
 /* ---------- Home: hero ---------- */
-.hero { max-width: 740px; margin-bottom: 20px; }
+.hero { max-width: 760px; margin-bottom: 20px; }
+
+.hero-lead {
+  font-family: var(--font-display);
+  font-size: clamp(21px, 2.1vw, 26px);
+  line-height: 1.5;
+  color: var(--fg);
+}
 
 .hero-kicker {
   color: var(--fg-muted);
