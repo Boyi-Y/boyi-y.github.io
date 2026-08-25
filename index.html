@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boyi Yang</title>
-  <meta name="description" content="Boyi Yang — UX design leader.">
+  <title>Boyi Yang — UX Design Leader</title>
+  <meta name="description" content="Boyi Yang — design leader for enterprise AI. UX Manager at Oracle NetSuite, 14+ years across enterprise SaaS, AI, and mobile.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script>
-    // Apply saved theme before paint to avoid flash
     (function () {
       const saved = localStorage.getItem('theme');
       if (saved) document.documentElement.dataset.theme = saved;
@@ -20,67 +19,187 @@
 <body>
   <main>
     <header class="site-header">
-      <h1 class="logotype">Boyi Yang</h1>
+      <h1 class="logotype"><a href="index.html">Boyi Yang</a></h1>
       <nav class="site-nav" aria-label="Site">
         <div class="nav-group">
           <a href="#work">Work</a>
-          <a href="#notes">Notes</a>
+          <a href="about.html">About</a>
         </div>
         <div class="nav-group">
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="mailto:hello@example.com">Email</a>
+          <a href="https://www.linkedin.com/in/yangboyi/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="about.html#contact">Contact</a>
         </div>
       </nav>
     </header>
 
-    <section class="intro">
-      <p>I'm a UX design leader with 14 years of experience building products and teams. Most recently, I led design for <a href="#">Placeholder Product</a> at <a href="#">Placeholder Company</a>, where we shipped things people love using. Before that, I grew a design team from 3 to 20 while raising the craft bar along the way.</p>
-      <p>I care about the details, about helping teams be more ambitious together, and&nbsp;— most importantly&nbsp;— about having fun through it all.</p>
+    <section class="hero">
+      <p class="hero-kicker">UX Manager · Oracle NetSuite · Singapore</p>
+      <h2>I lead design teams that make enterprise&nbsp;AI feel&nbsp;simple.</h2>
+      <p>14+ years across enterprise SaaS, AI, and mobile. I manage the JAPAC UX
+      team at Oracle NetSuite, where I helped define the design patterns behind
+      NetSuite&rsquo;s first generation of AI features — two of which were demoed
+      in SuiteWorld keynotes.</p>
     </section>
 
-    <section class="feed" id="work">
-      <article class="entry" data-media="media/placeholder-1.svg">
-        <time>June 2026</time>
-        <h2><a href="#">Project One</a></h2>
-        <p>One or two sentences about what this was, the role you played, and why it mattered. Keep it human and concrete.</p>
-      </article>
+    <div class="proof" aria-label="Career highlights">
+      <span>14+ years in design</span>
+      <span>Leading a design team across JAPAC</span>
+      <span>Shipped AI features live in NetSuite today</span>
+      <span>Expert in B2B product design and localization</span>
+    </div>
 
-      <article class="entry" data-media="media/placeholder-2.svg">
-        <time>March 2026</time>
-        <h2><a href="#">A talk or article</a></h2>
-        <p>Something you shared publicly — a talk, a podcast, an essay. One sentence on what it was about and how it landed.</p>
-      </article>
+    <section class="cases" id="work">
+      <p class="section-label">Design strategy &amp; leadership</p>
 
-      <article class="entry" data-media="media/placeholder-3.svg">
-        <time>November 2025</time>
-        <h2><a href="#">Project Two</a></h2>
-        <p>Another project entry. Credit the people you worked with by name — it reads generous and true.</p>
-      </article>
+      <a class="case-card" href="case-ai.html">
+        <div class="card-text">
+        <span class="num">01</span>
+        <h3>Shaping AI UX at NetSuite</h3>
+        <p>When generative AI arrived, our ERP had no design playbook for it.
+        I led the pattern work that became NetSuite&rsquo;s AI design guidelines —
+        and shipped the features that used them.</p>
+        <p class="tags"><span>AI</span><span>UX strategy</span><span>Design systems</span></p>
+        </div>
+        <img class="card-thumb" src="media/ai-pattern-showcase.jpg" alt="" loading="lazy">
+      </a>
 
-      <article class="entry" data-media="media/placeholder-1.svg">
-        <time>May 2025</time>
-        <h2><a href="#">Team milestone</a></h2>
-        <p>Manager-shaped entries work here too: an org you built, a hiring bar you set, a process you happily killed.</p>
-      </article>
+      <a class="case-card" href="case-team.html">
+        <div class="card-text">
+        <span class="num">02</span>
+        <h3>Building the system behind a high-performing design team</h3>
+        <p>How I built the practices, capabilities, and partnerships that
+        helped a distributed design team raise its quality and influence —
+        without making quality depend on me.</p>
+        <p class="tags"><span>Team management</span><span>UX strategy</span><span>Design operations</span></p>
+        </div>
+        <img class="card-thumb" src="media/team-systems-flow.jpg" alt="" loading="lazy">
+      </a>
 
-      <article class="entry" data-media="media/placeholder-2.svg">
-        <time>January 2024</time>
-        <h2><a href="#">Project Three</a></h2>
-        <p>Entries can reach back years — the feed is your career told as a story, newest first.</p>
-      </article>
+    </section>
+
+    <section class="cases" id="deep-dives">
+      <p class="section-label" style="margin-top: 72px;">Product work</p>
+
+      <a class="case-card" href="case-japan.html">
+        <div class="card-text">
+        <span class="num">03</span>
+        <h3>Compliance with an experience dividend</h3>
+        <p>Japan&rsquo;s new tax invoice law gave us a hard deadline. We used it as
+        a catalyst to redesign the entire Invoice Summary experience — meeting
+        the regulation and fixing years of accumulated friction.</p>
+        <p class="tags"><span>Enterprise delivery</span><span>Research</span><span>Localization</span></p>
+        </div>
+        <img class="card-thumb" src="media/japan-invoice-thumb.jpg" alt="" loading="lazy">
+      </a>
+
+      <a class="case-card" href="case-text-enhance.html">
+        <div class="card-text">
+        <span class="num">04</span>
+        <h3>Text Enhance, designed twice</h3>
+        <p>NetSuite&rsquo;s AI writing assistance under two opposite constraint
+        sets — shipped in the legacy product, then redesigned from telemetry
+        for NetSuite Next and defined as a design-system component.</p>
+        <p class="tags"><span>AI</span><span>Design systems</span></p>
+        </div>
+        <span class="card-thumb thumb-video"><video src="media/TextEnhance/text-enhance-thumb2.mp4" autoplay loop muted playsinline disablepictureinpicture></video></span>
+      </a>
+
+      <a class="case-card" href="case-prompt-studio.html">
+        <div class="card-text">
+        <span class="num">05</span>
+        <h3>Prompt Studio: from developer tool to product</h3>
+        <p>Redesigning NetSuite&rsquo;s prompt customization tool in the earliest
+        days of generative AI — when nobody knew yet what &ldquo;good&rdquo; looked
+        like.</p>
+        <p class="tags"><span>AI</span><span>Research</span></p>
+        </div>
+        <img class="card-thumb" src="media/PromptStudio/prompt-studio-thumb.jpg" alt="" loading="lazy">
+      </a>
+
+      <a class="case-card" href="case-kokorolab.html">
+        <div class="card-text">
+        <span class="num">06</span>
+        <h3>Kokorolab: an AI image tool for animation fans</h3>
+        <p>My freelance project, and my return to consumer products after
+        six years in enterprise B2B: the only UX on a live AI image product,
+        strategy to execution. 52% activation, 31% day-7 retention, 4.1%
+        paid conversion.</p>
+        <p class="tags"><span>AI</span><span>End-to-end product</span><span>Research</span></p>
+        </div>
+        <img class="card-thumb" src="media/Kokorolab/kokorolab-showcase.png" alt="" loading="lazy">
+      </a>
+
+      <a class="case-card" href="case-phone.html">
+        <div class="card-text">
+        <span class="num">07</span>
+        <h3>Designing a phone number component for global users</h3>
+        <p>Designing NetSuite Next&rsquo;s international phone number component —
+        the kind of &ldquo;small&rdquo; component that touches every record, every
+        invoice, and every country&rsquo;s formatting rules at once.</p>
+        <p class="tags"><span>Design systems</span><span>Enterprise delivery</span></p>
+        </div>
+        <span class="card-thumb thumb-video"><video src="media/phone-thumb.mp4" autoplay loop muted playsinline disablepictureinpicture></video></span>
+      </a>
+
+      <a class="case-card" href="case-timeworld.html">
+        <div class="card-text">
+        <span class="num">08</span>
+        <h3>TimeWorld: a unique product for luxury watch collectors</h3>
+        <p>A pre-AI freelance engagement: the app for watch collectors, with
+        18 luxury brands on board — strategy, information architecture, and
+        a design system built entirely from scratch, as the only UX on the
+        team.</p>
+        <p class="tags"><span>End-to-end product</span><span>Design systems</span><span>UX strategy</span></p>
+        </div>
+        <img class="card-thumb" src="media/TimeWorld/timeworld-showcase.png" alt="" loading="lazy">
+      </a>
+
+      <a class="case-card" href="case-foxsports.html">
+        <div class="card-text">
+        <span class="num">09</span>
+        <h3>Fox Sports Asia: an end-to-end responsive site redesign</h3>
+        <p>From my agency-era consumer work: stakeholder workshops, fan
+        personas, and wireframes that doubled as the product spec — content
+        consumption up 11% after launch.</p>
+        <p class="tags"><span>End-to-end product</span><span>Research</span></p>
+        </div>
+        <img class="card-thumb" src="media/FoxSports/foxsports-persona.png" alt="" loading="lazy">
+      </a>
+
+      <a class="case-card" href="case-pias.html">
+        <div class="card-text">
+        <span class="num">10</span>
+        <h3>PIAS: an advisor-facing financial planning tool</h3>
+        <p>A tablet and web service for financial advisors who sit face to
+        face with clients — two users, one screen, and a concept tested for
+        comprehension before any build.</p>
+        <p class="tags"><span>End-to-end product</span><span>Research</span></p>
+        </div>
+        <img class="card-thumb" src="media/PIAS/pias-cover-ipad.jpg" alt="" loading="lazy">
+      </a>
+    </section>
+
+    <section class="more">
+      <div class="row">
+        <h3><a href="earlier-work.html">Earlier work</a></h3>
+        <p>A decade of consumer products — Fox Sports, Aviva, 1M-user apps</p>
+      </div>
+      <div class="row">
+        <h3><a href="about.html">About me</a></h3>
+        <p>Product management → UX → design leadership</p>
+      </div>
     </section>
 
     <footer class="site-footer">
       <p>© <span id="year"></span> Boyi Yang</p>
+      <div class="foot-links">
+        <a href="mailto:byang03@gmail.com">byang03@gmail.com</a>
+        <a href="https://www.linkedin.com/in/yangboyi/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </footer>
   </main>
 
-  <!-- Hover media preview -->
-  <div class="media-preview" aria-hidden="true"><img alt=""></div>
-
-  <!-- Theme toggle -->
   <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"></button>
-
   <script src="script.js"></script>
 </body>
 </html>

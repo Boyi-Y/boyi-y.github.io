@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prompt Studio: from developer tool to product — Boyi Yang</title>
+  <meta name="description" content="Case study: redesigning NetSuite's prompt customization tool in the earliest days of generative AI, guided by usability testing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.dataset.theme = saved;
+    })();
+  </script>
+</head>
+<body>
+  <main>
+    <header class="site-header compact">
+      <p class="logotype-small"><a href="index.html">Boyi Yang</a></p>
+      <nav class="site-nav" aria-label="Site">
+        <div class="nav-group">
+          <a href="index.html#work">Work</a>
+          <a href="about.html">About</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="case-head">
+      <p class="eyebrow">Product work · AI product design</p>
+      <h1>Prompt Studio: from developer tool to&nbsp;product</h1>
+      <p class="sub">Redesigning NetSuite&rsquo;s prompt customization tool in the
+      earliest days of generative AI — when nobody, anywhere, knew yet what
+      &ldquo;good&rdquo; looked like.</p>
+      <div class="tags"><span>AI</span><span>Research</span></div>
+      <p class="nda-note">Prompt Studio is a publicly released feature;
+      screens shown with sample data.</p>
+    </div>
+
+    <div class="tldr">
+      <dl>
+        <dt>Role</dt>
+        <dd>Lead designer, partnering with researchers on usability testing</dd>
+        <dt>When</dt>
+        <dd>2024–2025, with discovery starting when generative AI was barely
+        a year into enterprise software</dd>
+        <dt>Scope</dt>
+        <dd>Redesign of the prompt authoring &amp; management experience for
+        NetSuite administrators</dd>
+        <dt>Outcome</dt>
+        <dd>Shipped; restructured from a developer form into a task-ordered
+        product</dd>
+      </dl>
+    </div>
+
+    <article class="prose">
+      <h2>The problem: AI administration nobody had designed before</h2>
+      <p class="lead">Prompt Studio lets administrators customize the AI
+      prompts behind NetSuite&rsquo;s features — tuning how AI writes for their
+      company&rsquo;s records, fields, and tone. When this project started,
+      generative AI was brand new to enterprise software. There were no
+      conventions to follow: prompt authoring tools barely existed anywhere,
+      let alone patterns for making them usable by admins rather than
+      engineers.</p>
+
+      <h2>Before: a developer&rsquo;s form</h2>
+      <p>The original version exposed the system&rsquo;s internals directly: raw
+      template syntax typed by hand, model parameters like Top&nbsp;K and
+      frequency penalty presented flat on one page, preview buried at the
+      bottom. It worked — for the people who built it. For an administrator
+      trying to make AI write purchase descriptions properly, every step was
+      a guess.</p>
+
+      <div class="figure zoom">
+        <img src="media/PromptStudio/prompt-studio-before.png" alt="Before the revamp: the original Prompt page as one flat developer form — prompt settings in a row, a raw template field containing hand-typed handler syntax, model settings like Cohere Command R, temperature, Top K, Top P, and frequency penalty exposed flat, and the preview buried at the bottom of the page.">
+        <p class="figcap">Before: one flat form — raw template syntax typed
+        by hand, model parameters in a row, preview at the bottom. Built by
+        developers, for developers.</p>
+      </div>
+
+      <h2>Evidence first: watch people fail, study the field</h2>
+      <p>Rather than debating opinions about a tool with no precedent, we
+      gathered evidence two ways: usability testing with our researchers to
+      see exactly where people fell off, and competitor research across the
+      emerging landscape of prompt tools to learn what conventions were
+      starting to form. The sessions were humbling in the useful way — the
+      flat form&rsquo;s order matched the system&rsquo;s schema, not the user&rsquo;s
+      thinking.</p>
+
+      <h2>After: structured around the task, not the schema</h2>
+      <p>The redesign reordered everything around how an admin actually
+      thinks:</p>
+      <ul>
+        <li><strong>Select the target first</strong> — which record type,
+        which field. Everything downstream depends on it, so it leads.</li>
+        <li><strong>Settings in plain language</strong> — name, language,
+        action — with model parameters grouped where they belong instead of
+        dominating the page.</li>
+        <li><strong>Guided variable insertion</strong> — pick a variable type,
+        pick a variable, click add — replacing hand-typed template syntax and
+        its silent failure modes.</li>
+        <li><strong>Preview with sample values</strong> — test the prompt
+        against realistic data before deploying it to the whole company.</li>
+      </ul>
+      <div class="figure zoom">
+        <img src="media/PromptStudio/prompt-studio-after.png" alt="After the revamp: the New Prompt page restructured around the admin's task — a left rail ordered as Select Target (prompt type, record type, field name), then Basic Prompt Settings in plain language, then Model Settings grouped at the end; the main area holds the template with guided variable insertion (pick a variable type, pick a variable, add to template), a variables-in-template table where sample values can be entered, and a preview pane that shows the prompt and its generated result side by side.">
+        <p class="figcap">After: the page follows the admin&rsquo;s task order —
+        select the target, then settings in plain language; variables are
+        inserted from dropdowns instead of typed syntax, and the preview
+        runs the prompt against sample values before anything is
+        deployed.</p>
+      </div>
+
+      <p>The structure was deliberately anchored to the user&rsquo;s task, not
+      to any particular UI kit — the kind of foundation that outlives
+      platform changes, because &ldquo;what am I trying to do first?&rdquo; doesn&rsquo;t
+      change when the technology underneath does.</p>
+
+      <h2>Outcome</h2>
+      <ul class="outcomes">
+        <li>Shipped as part of NetSuite&rsquo;s AI platform.</li>
+        <li>Task-first structure validated in usability testing.</li>
+        <li>Became one of the earliest concrete examples inside the company
+        of AI administration treated as a designed product, not a developer
+        surface.</li>
+      </ul>
+
+      <h2>What I learned</h2>
+      <p>When a technology is too new to have conventions, the user&rsquo;s task
+      order is the only stable foundation — schemas change, models change,
+      but &ldquo;what am I trying to do first?&rdquo; doesn&rsquo;t. Test early precisely
+      <em>because</em> nobody knows what good looks like yet: in a space with
+      no conventions, a handful of usability sessions makes you the
+      best-informed person in the room.</p>
+    </article>
+
+    <nav class="case-nav" aria-label="Case studies">
+      <a href="case-text-enhance.html"><span class="dir">Previous</span>Text Enhance, designed twice</a>
+      <a class="next" href="case-kokorolab.html"><span class="dir">Next</span>Kokorolab: an AI image tool for animation fans</a>
+    </nav>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Boyi Yang</p>
+      <div class="foot-links">
+        <a href="mailto:byang03@gmail.com">byang03@gmail.com</a>
+        <a href="https://www.linkedin.com/in/yangboyi/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+
+  <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"></button>
+  <script src="script.js"></script>
+</body>
+</html>

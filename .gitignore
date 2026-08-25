@@ -5,3 +5,11 @@ node_modules/
 
 # Claude Code local settings
 .claude/settings.local.json
+
+# Internal working docs — never publish
+content-plan.md
+site-copy.md
+
+# Hidden article (2026 study not ready) + its assets
+_hidden-case-l10n.html
+media/CJK/

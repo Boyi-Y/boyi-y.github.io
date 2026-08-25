@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compliance with an experience dividend — Boyi Yang</title>
+  <meta name="description" content="Case study: Japan's tax invoice reform as a catalyst to redesign the Invoice Summary experience end-to-end.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.dataset.theme = saved;
+    })();
+  </script>
+</head>
+<body>
+  <main>
+    <header class="site-header compact">
+      <p class="logotype-small"><a href="index.html">Boyi Yang</a></p>
+      <nav class="site-nav" aria-label="Site">
+        <div class="nav-group">
+          <a href="index.html#work">Work</a>
+          <a href="about.html">About</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="case-head">
+      <p class="eyebrow">Product work · Enterprise delivery</p>
+      <h1>Compliance with an experience dividend</h1>
+      <p class="sub">Japan&rsquo;s tax invoice reform gave every ERP a hard
+      deadline. We used it to redesign the Invoice Summary experience
+      end-to-end — compliance as the floor, not the goal.</p>
+      <div class="tags"><span>Enterprise delivery</span><span>Research</span><span>Localization</span></div>
+      <p class="nda-note">Details abstracted to respect confidentiality;
+      regulatory context is public.</p>
+    </div>
+
+    <div class="tldr">
+      <dl>
+        <dt>Role</dt>
+        <dd>Lead designer, Japan localization</dd>
+        <dt>When</dt>
+        <dd>2022–2025</dd>
+        <dt>Context</dt>
+        <dd>Japan&rsquo;s Qualified Invoice System (effective Oct 2023) changed
+        invoicing law for every business in the country</dd>
+        <dt>Outcome</dt>
+        <dd>Customers compliant on deadline — and the Invoice Summary
+        experience redesigned end-to-end instead of patched</dd>
+      </dl>
+    </div>
+
+    <article class="prose">
+      <h2>The situation</h2>
+      <p class="lead">In Japan, businesses issue a monthly consolidated
+      &ldquo;invoice summary&rdquo; — a document format deeply embedded in local
+      business culture. Japan&rsquo;s Qualified Invoice System, effective October
+      2023, imposed strict new requirements on tax invoices. Every ERP had to
+      comply. Deadline fixed, scope legally defined.</p>
+      <p>The easy path: bolt the new tax fields onto the existing flow. But the
+      existing Invoice Summary experience carried a decade of accumulated
+      friction:</p>
+      <ul>
+        <li><strong>Generation was painfully slow.</strong> Customers
+        complained about long waits; some partners had built workarounds —
+        running saved searches instead of the feature, scheduling generation
+        overnight with RPA, even rebuilding the whole flow in Microsoft
+        Access. When your customers engineer escape routes around your
+        feature, the feature is the problem.</li>
+        <li><strong>The design was ten years old</strong> and no longer fit how
+        Japanese businesses actually work: no way to customize the template
+        (in Japan, invoice summary layouts are industry-specific — one
+        standard template fits almost nobody), no draft or preview before
+        generation, and no easy way to adjust a summary after generation — in
+        a culture where the generated PDF is treated as the definitive legal
+        record and checking it before release is non-negotiable.</li>
+      </ul>
+      <p><strong>We made a deliberate bet: use the compliance mandate as the
+      catalyst to redesign the experience itself.</strong></p>
+
+      <h2>Question the expensive feature before optimizing it</h2>
+      <p>The slowness had a specific cause: during generation, the system
+      built a link between every invoice transaction and its summary.
+      Engineering saw a performance problem to optimize. We asked a different
+      question: <em>does anyone actually use those links?</em></p>
+      <p>I framed it as a testable hypothesis — users verify their summaries
+      from the PDF and their own saved searches, not by clicking through
+      transaction links — and we put mockups in front of users: the current
+      design with its long generation time versus a linkless design that
+      generated fast. That reframing changed the solution space entirely:
+      instead of spending engineering months optimizing how links were built,
+      we could stop paying for something users didn&rsquo;t value.</p>
+      <p>It&rsquo;s my favorite kind of design work — the screen barely changes,
+      but the product gets fundamentally better.</p>
+
+      <h2>Understand the real workflow, not the legal text</h2>
+      <ul>
+        <li>Journey mapping with the Professional Services team — the people
+        who see how customers actually configure and use invoice summaries —
+        structured around four explicit hypotheses: the unused links, the
+        one-summary-per-transaction rule, setup frequency, and the confusing
+        naming of &ldquo;standard&rdquo; versus &ldquo;consolidated&rdquo; summaries.</li>
+        <li>Customer and partner interviews, run in both English and Japanese,
+        which surfaced the cultural weight of the document: the invoice
+        summary PDF is the definitive version of the issued invoices, so
+        checking before release — and often sending a draft to the customer
+        first — is standard practice.</li>
+        <li>A design thinking workshop with dev &amp; PM to align everyone on
+        where the pain actually was.</li>
+      </ul>
+      <div class="figure" role="img" aria-label="Abstracted recreation of the Invoice Summary journey map: two personas — an accountant handling accounts payable, receivable, and monthly closing, and a system administrator handling setup — mapped across seven phases: configuration, day-to-day invoicing, generate invoice summary, check and recover from error, send to customer and follow up, archive, and customer payment. Pain points concentrate in the middle phases, from generation through sending.">
+        <svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+          <!-- personas -->
+          <text x="0" y="14" font-size="10" letter-spacing="1.4" fill="var(--fg-muted)">PERSONAS</text>
+          <g>
+            <rect x="0" y="24" width="215" height="44" rx="7" fill="var(--card)" stroke="var(--rule-faint)"/>
+            <circle cx="22" cy="46" r="10" fill="var(--accent)" fill-opacity="0.18"/>
+            <text x="40" y="42" font-size="11.5" font-weight="600" fill="var(--fg)">Accountant</text>
+            <text x="40" y="58" font-size="10.5" fill="var(--fg-muted)">AP/AR, billing, monthly closing</text>
+          </g>
+          <g>
+            <rect x="227" y="24" width="215" height="44" rx="7" fill="var(--card)" stroke="var(--rule-faint)"/>
+            <circle cx="249" cy="46" r="10" fill="var(--accent)" fill-opacity="0.18"/>
+            <text x="267" y="42" font-size="11.5" font-weight="600" fill="var(--fg)">System administrator</text>
+            <text x="267" y="58" font-size="10.5" fill="var(--fg-muted)">Setup, configuration, maintenance</text>
+          </g>
+          <!-- phase headers -->
+          <g font-size="10.5" font-weight="600" fill="var(--fg)" text-anchor="middle">
+            <g><rect x="0" y="92" width="126" height="34" rx="6" fill="var(--accent)" fill-opacity="0.12"/><text x="63" y="106">1 · Configuration</text><text x="63" y="119" font-weight="400" fill="var(--fg-muted)" font-size="9.5">settings &amp; preferences</text></g>
+            <g><rect x="136" y="92" width="126" height="34" rx="6" fill="var(--accent)" fill-opacity="0.12"/><text x="199" y="106">2 · Invoicing</text><text x="199" y="119" font-weight="400" fill="var(--fg-muted)" font-size="9.5">day to day</text></g>
+            <g><rect x="272" y="92" width="126" height="34" rx="6" fill="var(--accent)" fill-opacity="0.22"/><text x="335" y="106">3 · Generate</text><text x="335" y="119" font-weight="400" fill="var(--fg-muted)" font-size="9.5">invoice summary</text></g>
+            <g><rect x="408" y="92" width="126" height="34" rx="6" fill="var(--accent)" fill-opacity="0.22"/><text x="471" y="106">4 · Check &amp; recover</text><text x="471" y="119" font-weight="400" fill="var(--fg-muted)" font-size="9.5">from error</text></g>
+            <g><rect x="544" y="92" width="126" height="34" rx="6" fill="var(--accent)" fill-opacity="0.22"/><text x="607" y="106">5 · Send &amp; follow up</text><text x="607" y="119" font-weight="400" fill="var(--fg-muted)" font-size="9.5">print, mail, email</text></g>
+            <g><rect x="680" y="92" width="126" height="34" rx="6" fill="var(--accent)" fill-opacity="0.12"/><text x="743" y="106">6 · Archive</text><text x="743" y="119" font-weight="400" fill="var(--fg-muted)" font-size="9.5">records &amp; storage</text></g>
+            <g><rect x="816" y="92" width="124" height="34" rx="6" fill="var(--accent)" fill-opacity="0.12"/><text x="878" y="106">7 · Payment</text><text x="878" y="119" font-weight="400" fill="var(--fg-muted)" font-size="9.5">reconciliation</text></g>
+          </g>
+          <!-- abstracted sticky stacks -->
+          <g fill="var(--fg-muted)" fill-opacity="0.16">
+            <g><rect x="10" y="140" width="106" height="24" rx="4"/><rect x="10" y="170" width="106" height="24" rx="4"/><rect x="10" y="200" width="106" height="24" rx="4"/></g>
+            <g><rect x="146" y="140" width="106" height="24" rx="4"/><rect x="146" y="170" width="106" height="24" rx="4"/></g>
+            <g><rect x="282" y="140" width="106" height="24" rx="4"/><rect x="282" y="170" width="106" height="24" rx="4"/><rect x="282" y="200" width="106" height="24" rx="4"/><rect x="282" y="230" width="106" height="24" rx="4"/></g>
+            <g><rect x="418" y="140" width="106" height="24" rx="4"/><rect x="418" y="170" width="106" height="24" rx="4"/><rect x="418" y="200" width="106" height="24" rx="4"/><rect x="418" y="230" width="106" height="24" rx="4"/><rect x="418" y="260" width="106" height="24" rx="4"/></g>
+            <g><rect x="554" y="140" width="106" height="24" rx="4"/><rect x="554" y="170" width="106" height="24" rx="4"/><rect x="554" y="200" width="106" height="24" rx="4"/><rect x="554" y="230" width="106" height="24" rx="4"/></g>
+            <g><rect x="690" y="140" width="106" height="24" rx="4"/><rect x="690" y="170" width="106" height="24" rx="4"/></g>
+            <g><rect x="826" y="140" width="104" height="24" rx="4"/><rect x="826" y="170" width="104" height="24" rx="4"/></g>
+          </g>
+          <!-- pain stars -->
+          <g font-size="13" fill="var(--accent)">
+            <text x="378" y="158">✱</text>
+            <text x="514" y="188">✱</text>
+            <text x="514" y="248">✱</text>
+            <text x="650" y="158">✱</text>
+            <text x="650" y="218">✱</text>
+          </g>
+          <!-- pain bracket -->
+          <g>
+            <path d="M 282 300 H 670" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
+            <path d="M 282 300 v -6 M 670 300 v -6" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
+            <text x="476" y="320" font-size="11" fill="var(--accent)" text-anchor="middle" font-style="italic">where the pain concentrated — slow generation, error recovery, manual sending</text>
+          </g>
+        </svg>
+        <p class="figcap">The Invoice Summary journey map, recreated in
+        abstract: two personas, seven phases, and the pain concentrated
+        between generating and sending. The original research board — built
+        with the Professional Services team — is confidential.</p>
+      </div>
+
+      <div class="pullquote">
+        <p>&ldquo;Usually, no new ideas from engineers&rsquo; side&hellip; with such a
+        workshop we can get various opinions from them.&rdquo;</p>
+        <cite>— Product manager, NetSuite Japan, after the workshop</cite>
+      </div>
+
+      <h2>Design the compliance and the experience together</h2>
+      <ul>
+        <li>New tax invoice rules designed alongside a rethought Invoice
+        Summary flow, aimed squarely at the researched pain: preview before
+        generation so errors are caught early, easier adjustment of a
+        generated summary, and template customization for industry-specific
+        formats.</li>
+        <li>The Void Invoice Summary feature: instead of deleting (an audit
+        nightmare), voiding reverses the journal — compliance-safe <em>and</em>
+        clearer for accountants. This directly addressed the
+        delete-and-regenerate cycle users described in interviews.</li>
+        <li>Later, the SuiteTax SuiteApp revamp carried the redesign further,
+        building on our accumulated research.</li>
+      </ul>
+
+      <h2>Verify like it&rsquo;s a compliance project — because it is</h2>
+      <ul>
+        <li>Click tests on the new tax rule and invoice summary features.</li>
+        <li>Guerrilla tests on prototypes before launch.</li>
+        <li>A post-launch survey on the new financial reports and templates,
+        feeding the next iteration round.</li>
+      </ul>
+
+      <h3>Sweat the physical detail</h3>
+      <p>Japanese invoices are mailed in windowed envelopes. Our new PDF
+      templates position the receiver&rsquo;s name to stay visible through the
+      envelope window — a detail no requirements document asked for, and
+      exactly the kind users notice.</p>
+
+      <div class="figure" role="img" aria-label="Diagram: the invoice summary PDF template on the left, with the receiver's name block positioned in the upper left area, and a Japanese windowed envelope on the right — dashed guides show the name block aligning exactly with the envelope's window when the printed document is folded and inserted.">
+        <svg viewBox="0 0 940 300" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+          <!-- PDF template -->
+          <text x="70" y="16" font-size="10" letter-spacing="1.4" fill="var(--fg-muted)">THE PDF TEMPLATE</text>
+          <g>
+            <rect x="70" y="28" width="230" height="240" rx="6" fill="var(--card)" stroke="var(--rule-faint)"/>
+            <!-- name block -->
+            <rect x="90" y="52" width="120" height="40" rx="4" fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-opacity="0.6"/>
+            <text x="98" y="69" font-size="10" font-weight="600" fill="var(--fg)">Receiver&rsquo;s name</text>
+            <text x="98" y="83" font-size="9" fill="var(--fg-muted)">御中 · positioned here</text>
+            <!-- other content lines -->
+            <g fill="var(--fg-muted)" fill-opacity="0.28">
+              <rect x="215" y="52" width="65" height="8" rx="2"/>
+              <rect x="215" y="66" width="65" height="8" rx="2"/>
+              <rect x="90" y="112" width="190" height="8" rx="2"/>
+              <rect x="90" y="128" width="190" height="8" rx="2"/>
+              <rect x="90" y="152" width="190" height="60" rx="3"/>
+              <rect x="90" y="222" width="120" height="8" rx="2"/>
+            </g>
+          </g>
+          <!-- fold arrow -->
+          <g>
+            <line x1="330" y1="148" x2="420" y2="148" stroke="var(--fg-muted)" stroke-width="1.5"/>
+            <path d="M 412 142 L 424 148 L 412 154" fill="none" stroke="var(--fg-muted)" stroke-width="1.5"/>
+            <text x="376" y="136" font-size="10" fill="var(--fg-muted)" text-anchor="middle">fold &amp; insert</text>
+          </g>
+          <!-- envelope -->
+          <text x="450" y="16" font-size="10" letter-spacing="1.4" fill="var(--fg-muted)">THE WINDOWED ENVELOPE</text>
+          <g>
+            <rect x="450" y="60" width="420" height="180" rx="8" fill="var(--card)" stroke="var(--rule-faint)"/>
+            <path d="M 450 68 L 660 150 L 870 68" fill="none" stroke="var(--rule-faint)" stroke-width="1"/>
+            <!-- window -->
+            <rect x="480" y="150" width="150" height="52" rx="4" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 4"/>
+            <text x="492" y="172" font-size="10.5" font-weight="600" fill="var(--fg)">Receiver&rsquo;s name</text>
+            <text x="492" y="188" font-size="9.5" fill="var(--fg-muted)">visible through the window</text>
+            <!-- stamp -->
+            <rect x="812" y="76" width="42" height="52" rx="3" fill="none" stroke="var(--rule-faint)"/>
+          </g>
+          <!-- alignment note -->
+          <text x="660" y="280" font-size="11" fill="var(--accent)" font-style="italic" text-anchor="middle">the name block lands exactly in the window — no address labels, no re-printing</text>
+        </svg>
+        <p class="figcap">The detail no requirements document asked for:
+        the template&rsquo;s name block is positioned so that, folded and
+        inserted, it lands exactly in the envelope window.</p>
+      </div>
+
+      <h2>Outcome</h2>
+      <ul class="outcomes">
+        <li>Customers compliant with the Qualified Invoice System on
+        deadline.</li>
+        <li>Invoice Summary experience redesigned end-to-end, not patched —
+        the research from this arc powered the SuiteTax SuiteApp revamp and
+        further report and template work.</li>
+        <li>Research-integrated delivery became the norm: surveys, guerrilla
+        tests, and expert interviews are now standard steps, not
+        nice-to-haves.</li>
+      </ul>
+      <div class="pullquote">
+        <p>&ldquo;Her insistence on research and usability tests for Japan
+        localization projects is commendable.&rdquo;</p>
+        <cite>— Stakeholder feedback, performance review</cite>
+      </div>
+
+      <h2>What I learned</h2>
+      <p>Compliance projects are the best-disguised UX opportunities in
+      enterprise software: budget is guaranteed, attention is guaranteed,
+      deadlines are immovable — the only variable is whether design shows up
+      with ambition. And the highest-leverage question a designer can ask
+      isn&rsquo;t &ldquo;how should this look?&rdquo; but &ldquo;should the system be doing this
+      at all?&rdquo;</p>
+    </article>
+
+    <nav class="case-nav" aria-label="Case studies">
+      <a href="case-team.html"><span class="dir">Previous case</span>Building the system behind a high-performing design team</a>
+      <a class="next" href="case-text-enhance.html"><span class="dir">Next</span>Text Enhance, designed twice</a>
+    </nav>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Boyi Yang</p>
+      <div class="foot-links">
+        <a href="mailto:byang03@gmail.com">byang03@gmail.com</a>
+        <a href="https://www.linkedin.com/in/yangboyi/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+
+  <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"></button>
+  <script src="script.js"></script>
+</body>
+</html>

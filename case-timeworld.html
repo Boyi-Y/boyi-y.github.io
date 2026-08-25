@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TimeWorld: a unique product for luxury watch collectors — Boyi Yang</title>
+  <meta name="description" content="Case study: designing TimeWorld, an app for watch collectors — product strategy, information architecture, and a design system built entirely from scratch, as the only UX on the team.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.dataset.theme = saved;
+    })();
+  </script>
+</head>
+<body>
+  <main>
+    <header class="site-header compact">
+      <p class="logotype-small"><a href="index.html">Boyi Yang</a></p>
+      <nav class="site-nav" aria-label="Site">
+        <div class="nav-group">
+          <a href="index.html#work">Work</a>
+          <a href="about.html">About</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="case-head">
+      <p class="eyebrow">Product work · End-to-end product</p>
+      <h1>TimeWorld: a unique product for luxury watch&nbsp;collectors</h1>
+      <p class="sub">A freelance engagement from my pre-AI days: the app for
+      watch collectors, where I was the only UX on the team — product
+      strategy, information architecture, UI, and a design system built
+      entirely from scratch.
+      <a href="https://timeworld.io/" target="_blank" rel="noopener">See it live →</a></p>
+      <div class="tags"><span>End-to-end product</span><span>Design systems</span><span>UX strategy</span></div>
+    </div>
+
+    <div class="tldr">
+      <dl>
+        <dt>Role</dt>
+        <dd>Freelance designer — the only UX on the team: strategy,
+        information architecture, design system, UI</dd>
+        <dt>When</dt>
+        <dd>2023 — before AI-assisted design workflows existed; everything
+        by hand</dd>
+        <dt>What</dt>
+        <dd>TimeWorld — an app for watch collectors: horology news, direct
+        connections with brands, and a collector community</dd>
+        <dt>Status</dt>
+        <dd>Live at <a href="https://timeworld.io/" target="_blank" rel="noopener">timeworld.io</a>,
+        with 18 luxury watch brands on board as partners</dd>
+      </dl>
+    </div>
+
+    <article class="prose">
+      <h2>The brief: collectors are not just buyers</h2>
+      <p class="lead">Watch collectors are a peculiar audience: their
+      shopping journey is unique not only because of the multiple channels
+      of purchase, but also the many touchpoints where they get their
+      information. They collect stories — craftsmanship, history, the
+      lineage of a movement. TimeWorld&rsquo;s vision is to put the collector at
+      the center of the horological world: news, direct connection with
+      brands, and a community of people who care about the same things.</p>
+      <p>That framing creates a two-sided design problem. The product has to
+      earn the trust of collectors <em>and</em> look credible enough that
+      luxury maisons — the H.&nbsp;Moser&nbsp;&amp;&nbsp;Cie and HYT tier —
+      would put their brand inside it. Luxury brands do not lend their names
+      to interfaces that feel cheap. The design was the pitch.</p>
+
+      <h2>Strategy before screens</h2>
+      <p>As the only UX on the team, I owned the thinking, not just the
+      drawing — and the thinking started with the co-founder, not with
+      Figma. Together we mapped the collector&rsquo;s journey end to end —
+      fifteen stages, from the first spark of discovery through validating,
+      deciding, and the ritual of a new watch day, into the long life of
+      ownership: cataloging, maintaining, participating in the community,
+      reassessing the collection, and eventually selling, trading, or
+      passing watches on as legacy. Under every stage we charted the
+      behaviors and touchpoints, the emotional curve, the pain points, and
+      the opportunity for TimeWorld. The map made one thing obvious: most
+      products fight over the purchase moment, while the stages before and
+      after it — where collectors spend years, because the journey never
+      truly ends — were underserved. That&rsquo;s where TimeWorld plays.</p>
+
+      <div class="figure zoom">
+        <img src="media/TimeWorld/timeworld-journey-map.png" alt="Luxury Watch Collector Journey Map: fifteen stages from Spark and Discover through Learn, Shortlist, Hunt, Validate, Decide, Acquire, New Watch Day, Catalog, Wear, Maintain, Participate, Reassess Collection, Sell or Trade, and Legacy — each with key behaviors and touchpoints, an emotional journey curve, pain points, and TimeWorld's opportunity, closing with the note that the journey never truly ends.">
+        <p class="figcap">The Luxury Watch Collector Journey Map, built with
+        the co-founder: fifteen stages, the emotional curve, pain points, and
+        TimeWorld&rsquo;s opportunity at every step. The loop at the bottom is the
+        strategy in one line: the journey never truly ends.</p>
+      </div>
+
+      <p>With the journey agreed, I mapped the entire product as an
+      information architecture before any UI existed — every section, flow,
+      and decision point diagrammed and debated — so the team agreed on what
+      the product <em>was</em> before arguing about how it looked. That
+      structure page became the working contract between design and
+      engineering: features were added, cut, and sequenced against it.</p>
+      <p>The discipline mattered because the product concept spans three
+      jobs — content (news), connection (brands), and community (collectors)
+      — and a solo-designed product that tries to do three things without a
+      spine becomes three apps in a trench coat.</p>
+
+      <h2>A design system from scratch — defining what luxury looks like</h2>
+      <p>A luxury audience reads visual language the way collectors read a
+      dial — so the visual direction couldn&rsquo;t be borrowed from any toolkit.
+      It had to be <em>researched</em>. I studied how the maisons present
+      themselves — their sites, their print editorial, their watch
+      photography — and built mood boards to define what TimeWorld should
+      feel like before deciding what any screen should look like. The boards
+      converged on a direction: material over decorative, editorial over
+      app-like, restraint over noise. Metal, leather, and paper — not
+      app-store brights.</p>
+
+      <div class="figure" role="img" aria-label="TimeWorld visual direction: a muted luxury color palette, serif editorial typography, and brand keywords — heritage, precision, quiet luxury, material honesty.">
+        <svg viewBox="0 0 940 270" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+          <!-- palette -->
+          <g>
+            <text x="0" y="16" font-size="10" letter-spacing="1.4" fill="var(--fg-muted)">PALETTE</text>
+            <g>
+              <rect x="0" y="34" width="64" height="86" rx="6" fill="#F2EBDD"/>
+              <rect x="72" y="34" width="64" height="86" rx="6" fill="#C8A566"/>
+              <rect x="144" y="34" width="64" height="86" rx="6" fill="#8A5A32"/>
+              <rect x="216" y="34" width="64" height="86" rx="6" fill="#33291F"/>
+              <rect x="288" y="34" width="64" height="86" rx="6" fill="#1E1C1A"/>
+            </g>
+            <g font-size="10.5" fill="var(--fg-muted)">
+              <text x="0" y="140">Porcelain</text>
+              <text x="72" y="140">Champagne</text>
+              <text x="144" y="140">Cognac</text>
+              <text x="216" y="140">Espresso</text>
+              <text x="288" y="140">Onyx</text>
+            </g>
+          </g>
+          <!-- type specimen -->
+          <g>
+            <text x="420" y="16" font-size="10" letter-spacing="1.4" fill="var(--fg-muted)">TYPE</text>
+            <text x="420" y="105" font-family="Newsreader, Georgia, serif" font-size="76" fill="var(--fg)">Aa</text>
+            <text x="420" y="136" font-size="13" letter-spacing="4" fill="var(--fg)">TIMEWORLD</text>
+            <text x="420" y="158" font-size="11.5" fill="var(--fg-muted)">Editorial serif for stories · quiet sans for the interface</text>
+          </g>
+          <!-- keywords -->
+          <g>
+            <text x="712" y="16" font-size="10" letter-spacing="1.4" fill="var(--fg-muted)">DIRECTION</text>
+            <g font-family="Newsreader, Georgia, serif" font-size="19" fill="var(--fg)">
+              <text x="712" y="58">Heritage</text>
+              <text x="712" y="90">Precision</text>
+              <text x="712" y="122">Quiet luxury</text>
+              <text x="712" y="154">Material honesty</text>
+            </g>
+          </g>
+          <!-- foundation row -->
+          <line x1="0" y1="186" x2="940" y2="186" stroke="var(--rule-faint)" stroke-width="1"/>
+          <text x="0" y="212" font-size="10" letter-spacing="1.4" fill="var(--fg-muted)">CODIFIED INTO THE SYSTEM</text>
+          <g font-size="12" fill="var(--fg)">
+            <text x="0" y="240">Typography scale — display to label</text>
+            <text x="290" y="240">Color styles — primary · neutral · luxury</text>
+            <text x="620" y="240">Components — buttons, inputs, states</text>
+          </g>
+        </svg>
+        <p class="figcap">The visual direction distilled from brand research
+        and mood boards — then codified as the design system&rsquo;s foundations.</p>
+      </div>
+
+      <p>Only once the direction held did it become a system: a typography
+      scale from display to label tuned for editorial elegance, color styles
+      with a dedicated luxury palette, and components — buttons, inputs,
+      interaction states — defined once, documented in the file, and reused
+      everywhere. Built from zero, because for this audience the visual
+      language <em>is</em> the product&rsquo;s credibility.</p>
+
+      <h2>Made by hand, before AI</h2>
+      <p>This was 2023 — before AI-assisted design workflows. Every flow,
+      every component state, every piece of the system was drawn, specified,
+      and documented manually. I include it in this portfolio partly for
+      that reason: it&rsquo;s the control group. The craft underneath my current
+      AI-accelerated work was built here, the slow way.</p>
+
+      <h2>Outcome</h2>
+      <div class="figure zoom">
+        <img src="media/TimeWorld/timeworld-showcase.png" alt="TimeWorld design showcase: app screens for editorial articles, the Singapore Watch Club community chat, the Datejust catalog with brands and retailers, wishlist, and event details — in a gold-accented editorial visual language.">
+        <p class="figcap">The shipped design language across the product:
+        editorial articles, collector clubs, brand catalogs and retailers,
+        wishlist, and events — content, connection, and community as one
+        app.</p>
+      </div>
+      <ul class="outcomes">
+        <li>Live at <a href="https://timeworld.io/" target="_blank" rel="noopener">timeworld.io</a>.</li>
+        <li>18 luxury watch brands on board as partners — including
+        H.&nbsp;Moser&nbsp;&amp;&nbsp;Cie, Laurent Ferrier, Cuervo y
+        Sobrinos, and HYT — validation that the design language passes the
+        luxury bar.</li>
+        <li>A documented, from-scratch design system that let a tiny team
+        ship consistently without a design department.</li>
+      </ul>
+
+      <h2>What I learned</h2>
+      <p>A design system is a strategy decision disguised as a deliverable.
+      Build-from-scratch versus customize-a-toolkit isn&rsquo;t a matter of
+      ambition — it&rsquo;s a matter of what the audience reads into every pixel.
+      Collectors and maisons read craft; that&rsquo;s worth building for. And
+      working solo for a luxury client is the best craft training there is:
+      nobody reviews your kerning, but everybody feels it.</p>
+    </article>
+
+    <nav class="case-nav" aria-label="Case studies">
+      <a href="case-phone.html"><span class="dir">Previous</span>Designing a phone number component for global users</a>
+      <a class="next" href="case-foxsports.html"><span class="dir">Next</span>Fox Sports Asia: an end-to-end responsive site redesign</a>
+    </nav>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Boyi Yang</p>
+      <div class="foot-links">
+        <a href="mailto:byang03@gmail.com">byang03@gmail.com</a>
+        <a href="https://www.linkedin.com/in/yangboyi/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+
+  <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"></button>
+  <script src="script.js"></script>
+</body>
+</html>

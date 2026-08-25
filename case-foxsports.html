@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fox Sports Asia: an end-to-end responsive site redesign — Boyi Yang</title>
+  <meta name="description" content="Case study: redesigning Fox Sports Asia's responsive news site end to end — stakeholder workshops, fan personas, wireframes that doubled as specs, and an 11% lift in content consumption.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.dataset.theme = saved;
+    })();
+  </script>
+</head>
+<body>
+  <main>
+    <header class="site-header compact">
+      <p class="logotype-small"><a href="index.html">Boyi Yang</a></p>
+      <nav class="site-nav" aria-label="Site">
+        <div class="nav-group">
+          <a href="index.html#work">Work</a>
+          <a href="about.html">About</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="case-head">
+      <p class="eyebrow">Product work · End-to-end design</p>
+      <h1>Fox Sports Asia: an end-to-end responsive site&nbsp;redesign</h1>
+      <p class="sub">From my agency-era consumer work: leading the redesign
+      of a regional sports news site — stakeholder workshops, fan personas,
+      and wireframes that doubled as the product spec.</p>
+      <div class="tags"><span>End-to-end product</span><span>Research</span></div>
+    </div>
+
+    <div class="tldr">
+      <dl>
+        <dt>Role</dt>
+        <dd>UX designer — end to end: workshop facilitation, research,
+        information architecture, wireframes, and specs</dd>
+        <dt>When</dt>
+        <dd>2017–2018</dd>
+        <dt>What</dt>
+        <dd>The responsive news site for Fox Sports Asia — football, tennis,
+        motorsport, and more, across Asian markets</dd>
+        <dt>Outcome</dt>
+        <dd>Launched as foxsportsasia.com · content consumption up 11%</dd>
+      </dl>
+    </div>
+
+    <article class="prose">
+      <h2>The brief: one site, every kind of fan</h2>
+      <p class="lead">Sports fandom in Asia has a particular shape: the
+      matches that matter most are often played in Europe, in the middle of
+      the Asian night. Fans follow multiple sports at once, across every
+      device they own, and range from someone who checks scores once a week
+      to someone who tracks possession statistics during a live match.</p>
+      <p>Fox Sports Asia needed one responsive site to serve all of them —
+      and the redesign had to convince a room of stakeholders with different
+      priorities before anything could ship.</p>
+
+      <h2>Start with the stakeholders, not the screens</h2>
+      <p>The UX team opened with a design workshop that put the
+      stakeholders inside the fan&rsquo;s experience instead of debating
+      features — and I was one of its facilitators. We split participants
+      into groups, each assigned one of three personas, and gave them a
+      concrete scenario: a typical week of a tennis fan during a
+      tournament. Each group mapped the customer journey, brainstormed
+      against it, and dot-voted the MVP.</p>
+      <p>The workshop did two jobs at once: it produced a shared, prioritized
+      backlog — and it converted stakeholders into co-authors of the design
+      direction rather than reviewers of it.</p>
+
+      <h2>Personas grounded in interviews and data</h2>
+      <p>From interviews and behavioral data, we grouped fans by intensity —
+      casual, average, avid — and built personas with the texture that makes
+      research actionable. Sam, our avid football fan in Singapore, watches
+      the EPL on TV, follows La Liga on his laptop, checks his phone every
+      few hours for match stats, and wants his watch to vibrate when Arsenal
+      scores.</p>
+      <p>His pain points shaped the content strategy directly: the time
+      difference from European games (highlights must work as well as live),
+      commentary that didn&rsquo;t fit his football culture, and top international
+      events missing from coverage.</p>
+
+      <div class="figure zoom">
+        <img src="media/FoxSports/foxsports-persona.png" alt="Fan persona from the project: Sam, 36, Singapore — an avid football fan following the EPL and La Liga, supporting Arsenal FC and the Singapore Lions. The card maps his device behavior (TV for matches, laptop for news, mobile checks every few hours, a wearable for goal alerts), content needs like leaderboards and match stats, pain points including the time difference from European games and commentary that doesn't fit English football, and his predisposition to sponsors.">
+        <p class="figcap">Sam, the avid fan: one of three research-grounded
+        personas that anchored both the workshop and the design.</p>
+      </div>
+
+      <h2>Wireframes that doubled as the spec</h2>
+      <p>For delivery, I made one document carry both the responsive
+      wireframes and the product function specs — every module annotated
+      with its content rules, formats, and edge cases, for desktop and
+      mobile side by side. Developers built from a single source of truth;
+      nothing lived only in a meeting or a memory.</p>
+
+      <div class="figure zoom">
+        <img src="media/FoxSports/foxsports-wireframes.png" alt="Responsive wireframes for the Fox Sports Asia site: desktop and mobile layouts for the homepage and category landing pages with score bar, live match module, latest news, standings, and video modules — annotated with product function specifications describing content rules and formats for each module.">
+        <p class="figcap">The working document: responsive wireframes and
+        product function specs, together — a single source of truth for the
+        build.</p>
+      </div>
+
+      <h2>Outcome</h2>
+      <ul class="outcomes">
+        <li>Launched as foxsportsasia.com, serving fans across the
+        region.</li>
+        <li>Content consumption rose 11% after the revamp.</li>
+      </ul>
+
+      <h2>What I learned</h2>
+      <p>Sports fans were the original multi-device users — Sam taught me
+      about cross-screen journeys years before it became a design cliché.
+      And a wireframe that carries the spec is a contract: the discipline of
+      writing content rules next to the layout caught more problems than any
+      review meeting did.</p>
+    </article>
+
+    <nav class="case-nav" aria-label="Case studies">
+      <a href="case-timeworld.html"><span class="dir">Previous</span>TimeWorld: a unique product for luxury watch collectors</a>
+      <a class="next" href="case-pias.html"><span class="dir">Next</span>PIAS: an advisor-facing financial planning tool</a>
+    </nav>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Boyi Yang</p>
+      <div class="foot-links">
+        <a href="mailto:byang03@gmail.com">byang03@gmail.com</a>
+        <a href="https://www.linkedin.com/in/yangboyi/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+
+  <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"></button>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designing a phone number component for global users — Boyi Yang</title>
+  <meta name="description" content="Case study: designing NetSuite Next's international phone number component — discovery, assumption-testing with PMs, and design-system rigor.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.dataset.theme = saved;
+    })();
+  </script>
+</head>
+<body>
+  <main>
+    <header class="site-header compact">
+      <p class="logotype-small"><a href="index.html">Boyi Yang</a></p>
+      <nav class="site-nav" aria-label="Site">
+        <div class="nav-group">
+          <a href="index.html#work">Work</a>
+          <a href="about.html">About</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="case-head">
+      <p class="eyebrow">Product work · Component design</p>
+      <h1>Designing a phone number component for global&nbsp;users</h1>
+      <p class="sub">Strategy and craft in one project: the international
+      phone number component for NetSuite Next, its design guidelines, and
+      the settings that make globalization work — the kind of &ldquo;small&rdquo;
+      component that touches every record, every invoice, and every
+      country&rsquo;s formatting rules at once.</p>
+      <div class="tags"><span>Design systems</span><span>Enterprise delivery</span></div>
+      <p class="nda-note">Selected design artifacts shown; other details
+      abstracted to respect confidentiality.</p>
+    </div>
+
+    <div class="tldr">
+      <dl>
+        <dt>Role</dt>
+        <dd>Design lead — discovery through design-system spec; mentored a
+        junior designer through the full arc</dd>
+        <dt>When</dt>
+        <dd>2022–2024</dd>
+        <dt>Scope</dt>
+        <dd>Phone number input component + design guidelines + the
+        globalization preference settings, for NetSuite Next</dd>
+        <dt>Outcome</dt>
+        <dd>Now a global component in NetSuite Next; discovery approach cited
+        by my manager as a model for handling ambiguous requirements</dd>
+      </dl>
+    </div>
+
+    <article class="prose">
+      <h2>Why a phone number is hard in an ERP</h2>
+      <p class="lead">In a consumer app, a phone number is one field on a
+      signup form. In an ERP, it lives on customer, employee, and vendor
+      records; prints on invoices and name cards; feeds VoIP calls; gets
+      copy-pasted between systems all day — across every country&rsquo;s
+      formatting conventions simultaneously. A Singapore company calls
+      Japanese customers from a US-configured account. Whose format wins?</p>
+
+      <h2>Start with an audit, not a mockup</h2>
+      <p>I began with a UX audit of how the existing product handled phone
+      numbers. The findings explained years of quiet user pain:</p>
+      <ul>
+        <li>Numbers were saved and displayed exactly as typed — any format,
+        no validation.</li>
+        <li>Format masking behaved in ways users didn&rsquo;t expect.</li>
+        <li>No instructions on expected format — users were left guessing.</li>
+        <li>No separate extension field — extensions were crammed into the
+        number itself.</li>
+      </ul>
+
+      <h2>Turn unclear requirements into explicit assumptions</h2>
+      <p>The PM requirements arrived vague and, on inspection, full of
+      unstated assumptions. Instead of designing to them — or arguing — I ran
+      a structured Know / Unknown / Assumption session with the product team.
+      Laying out what we actually knew versus what we were assuming let the
+      PM discover the gaps in their own framing, and the requirements were
+      rewritten from that shared understanding. My manager later cited this
+      as a model for handling ambiguous requirements.</p>
+      <p>From there, discovery was systematic: use cases and personas mapping
+      every scenario to the record types and pages where phone numbers live,
+      plus a competitor analysis of how Dynamics 365, QuickBooks, and
+      Dynamics GP handle formatting.</p>
+
+      <h2>The key finding: two scenarios define the whole product</h2>
+      <p>The discovery converged on two scenarios that, between them, explain
+      everything the component must do.</p>
+
+      <h3>Scenario 1 — capturing numbers on records</h3>
+      <p>Three personas, three record types, one component:</p>
+      <ul>
+        <li><strong>Customer records</strong> — Amita (sales) adds phone
+        numbers when creating customer records, calls customers from those
+        numbers, and tracks the communication history.</li>
+        <li><strong>Vendor records</strong> — Cameron (operations) adds phone
+        numbers when creating vendor records for purchasing and contract
+        work.</li>
+        <li><strong>Employee records</strong> — Finley (hiring manager) adds
+        phone numbers when creating employee records.</li>
+      </ul>
+      <p>The insight in scenario 1: a phone number is never data at rest. It
+      gets dialed, tracked against a history, printed, exported. Capture is
+      only the beginning of its life — which is why validation at entry
+      matters so much.</p>
+
+      <h3>Scenario 2 — controlling the format, at three levels</h3>
+      <p>The second scenario is where the product&rsquo;s real shape emerged.
+      Different people need different formats — at different scopes:</p>
+      <ul>
+        <li><strong>System-wide global setup.</strong> Finley has had basic
+        NetSuite training but is new to many tasks. Working through company
+        setup, she sets the <em>international</em> format as the org-wide
+        default — so NetSuite works as expected for employees, customers,
+        and vendors based in different countries.</li>
+        <li><strong>User-specific setup.</strong> Amita handles only local US
+        customers. She sets her own preference to the <em>national</em>
+        format: she doesn&rsquo;t want country codes cluttering every number she
+        looks at all day. The quiet bonus: with local numbers stripped of
+        codes, any foreign number instantly stands out.</li>
+        <li><strong>Task-based local configuration.</strong> Amita exports a
+        list of customer records to CSV — and for the file, she needs the
+        <em>international</em> format, different from the national format in
+        her personal preferences. Format must be switchable at the point of
+        the task, without touching her settings.</li>
+      </ul>
+
+      <div class="figure zoom">
+        <img src="media/phone-preference-levels.png" alt="Preferences Levels flow from the working file: the admin's onboarding sets the company-wide phone number format, flowing into the company or subsidiary's default region format and everyone's phone number component country-code sorting, then the user's personal region format, and finally task-specific settings marked on hold — each level illustrated with sketched NetSuite screens and personas.">
+        <p class="figcap">From the working file: how each preference level
+        maps to a real screen — admin onboarding, company settings, personal
+        preferences, and the task level scoped for a later phase.</p>
+      </div>
+
+      <h2>The component: flexible on the surface, smart underneath</h2>
+      <p>Everything the research found converges in the component itself —
+      because whatever the settings say, the component is where every user
+      actually meets a phone number. Designing it started with a competitor
+      scan and an exhaustive inventory of input behaviors: some users type
+      the country code straight into the number, some prefer to select it
+      from the dropdown, some want to search it — by country name or by
+      code, exact or partial.</p>
+      <p>Rather than pick one behavior and punish the rest, the component
+      supports them all — and stays coherent because of the intelligence
+      underneath: <strong>a detection algorithm that recognizes whether the
+      user&rsquo;s input was meant to include a country code or not</strong>, and
+      resolves it accordingly. Type &ldquo;+81&hellip;&rdquo;, pick from the list, or
+      search &ldquo;Jap&rdquo; — you end up in the same clean, validated state.
+      Flexibility for the user, consistency for the system.</p>
+
+      <h2>The design: format governance, not just an input</h2>
+      <p>The interesting design problem wasn&rsquo;t the input box — it was
+      <em>who decides the format</em>. The three-level preference model fell
+      directly out of scenario 2: a company-wide default set by the admin, a
+      per-user override for people whose work doesn&rsquo;t match the company&rsquo;s
+      shape, and a task-level switch at the point of use.</p>
+      <div class="figure zoom">
+        <img src="media/phone-admin-settings.png" alt="Admin settings mockup: the General Settings Region page with an Advanced Format Settings panel where phone number formats sit alongside date and time, number, and financial amount formats, each with a live preview — the phone number row expanded to show options like displaying local numbers without the country code and showing the company's country codes at the top of the drop-down list.">
+        <p class="figcap">The admin level, designed: phone number format
+        lives with the other regional formats — date, number, currency —
+        each with a live preview. The expanded options carry the research
+        straight into the UI, including &ldquo;display local numbers without the
+        country code.&rdquo;</p>
+      </div>
+
+      <p>The component itself absorbed the audit findings: a country-prefix
+      selector with search, defaulting to the parent company&rsquo;s region and
+      supporting non-geographic numbers like toll-free ranges; validation
+      that guides rather than blocks — wrong digit count, format mismatch,
+      and unknown country codes each get a specific, recoverable warning,
+      and the user can still save; live formatting hints so users see how
+      their entry will be stored; and a proper extension field at last. All
+      of it specified to design-system standard, so every team on the new
+      platform inherits the same behavior.</p>
+
+      <h2>Outcome</h2>
+      <div class="figure zoom">
+        <img src="media/phone-component-design.png" alt="Phone number component design spec: the country prefix section showing the selector with search, geographic and non-geographic number types like North America Toll Free and UIFN, search by country name or code with partial matching and no-result states — and the validation section showing warning states for wrong digit counts, format mismatches, invalid country codes, and live formatting hints.">
+        <p class="figcap">From the component spec: the country-prefix flows
+        (select, search, partial match, no result) and the validation states
+        that guide without blocking.</p>
+      </div>
+      <ul class="outcomes">
+        <li>Now a global component in NetSuite Next — any team, any form,
+        one behavior, with the formatting preference settings alongside
+        it.</li>
+        <li>The junior designer I mentored through this project went from
+        supporting discovery to owning design tasks — the project was her
+        growth arc as much as the component&rsquo;s.</li>
+        <li>Wrapped ahead of schedule after the requirements clarified.</li>
+      </ul>
+
+      <h2>What I learned</h2>
+      <p>The smallest components hide the most complexity — and they&rsquo;re
+      where design systems earn their keep, because a phone number done right
+      once is done right everywhere. And clarity work <em>is</em> design work:
+      the Know/Unknown/Assumption session did more for this component&rsquo;s
+      quality than any number of mockup iterations would have.</p>
+    </article>
+
+    <nav class="case-nav" aria-label="Case studies">
+      <a href="case-kokorolab.html"><span class="dir">Previous</span>Kokorolab: an AI image tool for animation fans</a>
+      <a class="next" href="case-timeworld.html"><span class="dir">Next</span>TimeWorld: a unique product for luxury watch collectors</a>
+    </nav>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Boyi Yang</p>
+      <div class="foot-links">
+        <a href="mailto:byang03@gmail.com">byang03@gmail.com</a>
+        <a href="https://www.linkedin.com/in/yangboyi/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+
+  <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"></button>
+  <script src="script.js"></script>
+</body>
+</html>

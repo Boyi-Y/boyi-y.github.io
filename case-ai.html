@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shaping AI UX at NetSuite — Boyi Yang</title>
+  <meta name="description" content="Case study: a cross-org discovery that gave NetSuite's product teams a shared framework for conversational AI — seven patterns, an interim AI design system, and a keynote-stage prototype.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.dataset.theme = saved;
+    })();
+  </script>
+</head>
+<body>
+  <main>
+    <header class="site-header compact">
+      <p class="logotype-small"><a href="index.html">Boyi Yang</a></p>
+      <nav class="site-nav" aria-label="Site">
+        <div class="nav-group">
+          <a href="index.html#work">Work</a>
+          <a href="about.html">About</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="case-head">
+      <p class="eyebrow">Case study 01 · AI strategy</p>
+      <h1>Shaping AI UX at NetSuite</h1>
+      <p class="sub">A cross-org discovery that gave product teams a shared
+      framework for conversational AI — when AI appears, where it lives, and
+      the patterns that keep it consistent.</p>
+      <div class="tags"><span>AI</span><span>UX strategy</span><span>Design systems</span></div>
+      <p class="nda-note">This case study describes discovery work at a
+      framework level; internal details are abstracted, and the prototype
+      shown here was publicly demoed.</p>
+    </div>
+
+    <div class="tldr">
+      <dl>
+        <dt>Role</dt>
+        <dd>Design lead on Global/AI UX discovery — a cross-org project with
+        design partners across regions; I also mentored a designer through it</dd>
+        <dt>When</dt>
+        <dd>2023–2024</dd>
+        <dt>Scope</dt>
+        <dd>&ldquo;Ask Oracle&rdquo; conversational-AI discovery · AI interaction
+        framework · interim AI UX design system · conversational prototype</dd>
+        <dt>Outcome</dt>
+        <dd>A seven-pattern framework and component foundation product teams
+        build from instead of designing AI interactions from scratch;
+        prototype demoed in a SuiteWorld 2024 keynote</dd>
+      </dl>
+    </div>
+
+    <article class="prose">
+      <h2>The situation</h2>
+      <p class="lead">In 2023, generative AI landed in enterprise software all
+      at once — and every product team wanted to bolt on a chatbot. NetSuite,
+      an ERP used by tens of thousands of companies, faced the classic risk:
+      a dozen teams shipping a dozen inconsistent AI experiences into
+      financial workflows where a wrong click has real consequences.</p>
+      <p>The Global/AI UX discovery project existed to prevent that. The goal
+      wasn&rsquo;t to ship one AI feature — it was to answer, once, the questions
+      every team was about to answer differently: when should AI appear, where
+      should it live in the interface, and what components make it feel like
+      one product.</p>
+
+      <h2>The framework: two questions before any screens</h2>
+      <p>Instead of starting from screens, we started from an interaction
+      model built on two axes:</p>
+      <ul>
+        <li><strong>Initiation</strong> — does the <em>system</em> start the
+        interaction (proactive, contextual help), or does the <em>user</em>
+        (asking for something)?</li>
+        <li><strong>Placement</strong> — does the AI live <em>immersive</em>
+        (a full-screen conversational workspace), <em>beside</em> the work (a
+        companion panel), <em>inside</em> it (assistance within a field or
+        form), or <em>invisible</em> (working in the background, surfacing
+        only results)?</li>
+      </ul>
+      <p>That matrix produced <strong>seven named AI UX patterns</strong>,
+      from full-screen conversational experiences down to lightweight and
+      background assistance. The power of the taxonomy is what it does to
+      roadmap conversations: a team proposing an AI feature no longer starts
+      with &ldquo;let&rsquo;s add a chat window&rdquo; — they locate their scenario in the
+      matrix and inherit the right pattern. Writing assistance inside a
+      field, anomaly detection running invisibly, an assistant beside the
+      workflow: all one system, not three inventions.</p>
+
+      <div class="figure zoom">
+        <img src="media/ai-pattern-showcase.jpg" alt="AI UX patterns illustration — presence grows with the task: four abstracted screens on a size scale, from XS Invisible (AI working in the background), to S Inside (assistance within a field), to M Beside (a companion panel next to the work), to L Immersive (a full conversational workspace).">
+        <p class="figcap">The placement axis, illustrated: AI&rsquo;s presence
+        grows with the task — from invisible background work to a fully
+        immersive workspace. Recreated for this portfolio; the original
+        NetSuite documents are confidential.</p>
+      </div>
+
+      <h2>From framework to practice</h2>
+      <p>A taxonomy nobody can build from is a poster. The discovery brought
+      together everything needed to make the model usable:</p>
+      <ul>
+        <li><strong>User goals and &ldquo;shape of data&rdquo; mapping</strong> — which
+        user problems AI can credibly help with, and what the underlying data
+        looks like for each. In an ERP, the data&rsquo;s shape decides what the AI
+        can honestly promise — this grounding killed several attractive but
+        unbuildable ideas early.</li>
+        <li><strong>Idea prioritization</strong> across scenarios, so the
+        patterns targeted the workflows that mattered.</li>
+        <li><strong>An interim AI UX design system</strong> — reusable
+        patterns and draft UI components organized by the four placements
+        (Invisible, Inside, Beside, Immersive), aligned with the
+        next-generation design language.</li>
+        <li><strong>A conversational UI prototype</strong> plus brand
+        exploration for how the assistant should present itself.</li>
+      </ul>
+      <p>Throughout, I synced regularly with the teams building AI features
+      so the emerging standards and the shipping products pulled in the same
+      direction — and I mentored a designer through the discovery, because
+      patterns that live in one person&rsquo;s head don&rsquo;t survive that person&rsquo;s
+      vacation.</p>
+
+      <h2>Proving it on the biggest stage</h2>
+      <p>The &ldquo;Ask Oracle&rdquo; exploration became <em>NetSuite Assistant in
+      Global Search</em> — a prototype I co-created that was demoed in a
+      SuiteWorld 2024 keynote: conversational assistance woven into the
+      product&rsquo;s core navigation rather than bolted on beside it.</p>
+
+      <h2>Outcome — and an honest status</h2>
+      <ul class="outcomes">
+        <li>A reusable conversational-AI framework: seven patterns with a
+        shared vocabulary that product teams reference instead of designing
+        AI interactions from scratch.</li>
+        <li>An interim AI UX design system carrying the patterns into
+        components.</li>
+        <li>A keynote-stage prototype demonstrating the immersive end of the
+        framework.</li>
+        <li>The pattern thinking flowed directly into shipped AI features —
+        <a href="case-text-enhance.html">Text Enhance</a> (the &ldquo;inside&rdquo;
+        pattern) and <a href="case-prompt-studio.html">Prompt Studio</a>
+        among them.</li>
+      </ul>
+      <p>This was discovery work, and I present it as such: a foundation,
+      deliberately built before the features — not a shipped experience
+      claiming retroactive strategy.</p>
+      <div class="pullquote">
+        <p>Her design work was &ldquo;crucial for the successful launch of
+        NetSuite AI products.&rdquo;</p>
+        <cite>— Senior design manager, Oracle (performance review)</cite>
+      </div>
+
+      <h2>What I learned</h2>
+      <p>AI patterns age faster than form patterns. The framework we drew in
+      year one needed revisiting within months as the models improved —
+      governing a living pattern library matters more than any first version
+      of it. And in AI strategy work, the most valuable artifact isn&rsquo;t a
+      screen: it&rsquo;s a shared vocabulary. Once seven patterns had names, every
+      roadmap conversation across teams got shorter.</p>
+    </article>
+
+    <nav class="case-nav" aria-label="Case studies">
+      <a href="index.html#work"><span class="dir">Back</span>All work</a>
+      <a class="next" href="case-team.html"><span class="dir">Next case</span>Building the system behind a high-performing design team</a>
+    </nav>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Boyi Yang</p>
+      <div class="foot-links">
+        <a href="mailto:byang03@gmail.com">byang03@gmail.com</a>
+        <a href="https://www.linkedin.com/in/yangboyi/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+
+  <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"></button>
+  <script src="script.js"></script>
+</body>
+</html>

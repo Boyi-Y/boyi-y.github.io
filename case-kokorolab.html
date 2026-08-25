@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kokorolab: an AI image tool for animation fans — Boyi Yang</title>
+  <meta name="description" content="Case study: designing Kokorolab end to end — an AI image generation and editing product built around Japanese creator culture, live at kokorolab.net.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.dataset.theme = saved;
+    })();
+  </script>
+</head>
+<body>
+  <main>
+    <header class="site-header compact">
+      <p class="logotype-small"><a href="index.html">Boyi Yang</a></p>
+      <nav class="site-nav" aria-label="Site">
+        <div class="nav-group">
+          <a href="index.html#work">Work</a>
+          <a href="about.html">About</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="case-head">
+      <p class="eyebrow">Product work · End-to-end product</p>
+      <h1>Kokorolab: an AI image tool for animation&nbsp;fans</h1>
+      <p class="sub">My freelance project — and my return to consumer
+      products after six years in enterprise B2B. I&rsquo;m the only UX designer
+      on the team: research, strategy, UX, UI, and monetization, on a live
+      AI image tool for animation fans — a niche market with special needs,
+      built around an insight from Japanese creator culture.
+      <a href="https://kokorolab.net/ja/home" target="_blank" rel="noopener">See it live →</a></p>
+      <div class="tags"><span>AI</span><span>End-to-end product</span><span>Research</span></div>
+    </div>
+
+    <div class="tldr">
+      <dl>
+        <dt>Role</dt>
+        <dd>Freelance designer — the only UX on the team, from strategy to
+        execution: research, product concept, UX, UI, pricing experience</dd>
+        <dt>When</dt>
+        <dd>2025–present</dd>
+        <dt>What</dt>
+        <dd>Kokorolab — anime &amp; realistic image generation for the
+        Japanese market, built as two features: an image editor
+        (prompt-to-image and <em>sabun</em> variations) and story creation
+        with consistent characters</dd>
+        <dt>Results</dt>
+        <dd>52% new-user activation · 31% seven-day retention · 4.1%
+        free-to-paid conversion</dd>
+        <dt>Status</dt>
+        <dd>Live at <a href="https://kokorolab.net/ja/home" target="_blank" rel="noopener">kokorolab.net</a>
+        with paid subscription tiers</dd>
+      </dl>
+    </div>
+
+    <article class="prose">
+      <h2>The insight: 差分, not one-off images</h2>
+      <p class="lead">Most AI image tools treat every generation as a one-off:
+      you prompt, you get a picture, you start over. But Japanese 2D creator
+      culture has a concept the generic tools ignore — <em>sabun</em> (差分),
+      the practice of creating small variations of a character: same identity,
+      different outfit, expression, or accessory. For dōjin artists and anime
+      fans, the variation <em>is</em> the art form.</p>
+      <p>Kokorolab is built on the newest AI image-generation technology, in
+      a market segment young enough that direct competitors were still few —
+      which meant the product definition itself had to be invented, not
+      benchmarked. We hammered out the concept together through research and
+      debate, and it landed on two features serving one audience — 2D
+      culture fans, from casual creators to power users:</p>
+      <ul>
+        <li><strong>The image editor</strong>, with two ways to create:
+        generate an image from scratch with a prompt, or make
+        <em>sabun</em> variations of an existing character — the culturally
+        rooted centerpiece.</li>
+        <li><strong>Story</strong>: upload a character image, then generate
+        scene after scene from prompts — scenes accumulate into a story,
+        and every scene offers multiple image results to choose from.</li>
+      </ul>
+      <p>The product&rsquo;s promise isn&rsquo;t &ldquo;generate an image&rdquo; — it&rsquo;s
+      <strong>keep the character, change the moment</strong>. That one framing
+      decision drove every design choice that followed.</p>
+
+      <h2>Designing for two fluencies at once</h2>
+      <p>The audience splits into two kinds of users: casual creators who
+      describe what they want in plain language, and power users from the
+      dōjin world who think in the tag vocabulary of image boards. Rather
+      than pick one, the prompt experience offers both modes side by side —
+      natural-language prompting (&ldquo;making a heart with both hands&rdquo;) and
+      tag prompting (&ldquo;heart hands&rdquo;) — so each audience starts in its own
+      language and produces the same kind of result. It&rsquo;s progressive
+      disclosure applied to prompting: expertise changes your input style,
+      not your capability.</p>
+
+      <h2>Story: giving images the context words have</h2>
+      <p>The hardest AI UX problem in image generation is continuity — models
+      forget what your character looks like between generations. Kokorolab&rsquo;s
+      story feature treats that as the product&rsquo;s central job. The flow:
+      upload a character image, describe a scene, and generate — the system
+      keeps the character consistent by building on the reference and the
+      generation history. Each scene returns multiple image results; the
+      creator selects one or several, then moves to the next scene. Scene by
+      scene, a story accumulates — 50+ pages can grow from a single starting
+      image.</p>
+      <p>The design principle behind it: <em>images need context the way
+      words do</em>. A sentence means little without the paragraph around it;
+      a character image means more inside a story. The UI walks creators
+      scene by scene — from sitting on the edge of the bed, to breakfast, to
+      the arcade — with each generation aware of everything before it.</p>
+
+      <div class="figure zoom">
+        <img src="media/Kokorolab/kokorolab-gui-flow.png" alt="Kokorolab mobile story-creation flow across five screens: exploring story templates, describing the story with a reference image and prompt settings like tag completion, quality tags, and negative prompt presets, typing a prompt with a reference image attached, watching candidates generate, and selecting one image as the scene.">
+        <p class="figcap">The story-creation flow: describe (or pick a
+        template), attach a reference, generate, and select the scene —
+        with tag completion and quality presets quietly serving both casual
+        and power users along the way.</p>
+      </div>
+
+      <h2>The only UX in the room — strategy to execution</h2>
+      <p>This is a freelance project, and I am the only UX person on the
+      team. There&rsquo;s no researcher to brief, no PM to frame the problem, no
+      junior designer to delegate to. Whatever the product needs from design,
+      I do it:</p>
+      <ul>
+        <li><strong>Research</strong> — my own, end to end: studying the
+        market and competitors, digging into creator culture, and reading
+        user behavior after launch to decide what to fix next.</li>
+        <li><strong>Product strategy</strong> — positioning against generic
+        image generators; the two-feature architecture (image editor with
+        prompt-to-image and variations; story with scene-by-scene
+        generation), shaped collaboratively through research and
+        debate.</li>
+        <li><strong>The full UX surface</strong> — onboarding, prompting,
+        editing flows, character creation, story building, community and
+        tutorial content.</li>
+        <li><strong>Monetization design</strong> — a credit-based model with
+        two simple tiers, priced for individuals, with credits that never
+        expire — a deliberate trust choice in a market wary of
+        subscriptions.</li>
+        <li><strong>Japanese-first execution</strong> — the product leads
+        with Japanese, applying everything my localization research taught
+        me about how Japan reads density, tone, and detail.</li>
+      </ul>
+
+      <h2>Customized Tailwind — pragmatism for a team of one</h2>
+      <p>A one-person design team doesn&rsquo;t have the luxury of building a
+      design system from scratch — and this product didn&rsquo;t need one. I
+      leaned on Tailwind&rsquo;s toolkit and customized its color and typography
+      to carry Kokorolab&rsquo;s style. Consistency comes from Tailwind&rsquo;s
+      constraints; identity comes from the customization. Knowing which
+      corners are safe to cut is the skill.</p>
+
+      <h2>Outcome</h2>
+      <div class="figure zoom">
+        <img src="media/Kokorolab/kokorolab-showcase.png" alt="Kokorolab design showcase: the landing page with the tagline 'Start with one image, infinite imagination to realize', the dark story editor with scene editing and reference images, character variant grids showing the same character in different outfits, the variants panel, login, and the quick-start inspiration gallery.">
+        <p class="figcap">The shipped design across web: landing, the story
+        editor, character variants — the sabun promise made visible — and
+        the quick-start gallery that teaches prompting by example.</p>
+      </div>
+      <p>The product is live, paid, and finding its audience. The early
+      numbers suggest the <em>sabun</em> bet is resonating:</p>
+      <ul class="outcomes">
+        <li><strong>52%</strong> new-user activation.</li>
+        <li><strong>31%</strong> seven-day retention.</li>
+        <li><strong>4.1%</strong> free-to-paid conversion.</li>
+      </ul>
+
+      <h2>Why this matters next to my enterprise work</h2>
+      <p>The past six years of my career have been enterprise B2B. Before
+      Oracle, I spent a decade shipping consumer products at IT companies and
+      agencies — so Kokorolab is a precious opportunity to bring those
+      consumer muscles back, and test them in the AI era: delight over
+      density, emotion over compliance, conversion over adoption. Same
+      discipline, refreshed terrain. It keeps me honest about what shipping
+      really takes — and it&rsquo;s proof that the AI fluency I build in my team
+      is something I practice myself, at product scale.</p>
+
+      <h2>What I learned</h2>
+      <p>This project ran the entire design chain through my own hands:
+      choosing the brand color, defining the design system, mapping the user
+      flows, and carrying everything to hi-fi mockups for the final product.
+      Shipping it — and watching the live numbers come back healthy — gave
+      me something a manager can quietly lose over the years:
+      <strong>confidence as a strong individual contributor</strong>. The
+      craft isn&rsquo;t just still there; it&rsquo;s sharper.</p>
+      <p>It also deepened me in ways the day job couldn&rsquo;t. I now understand
+      AI image models from the inside — how training actually works, and
+      where today&rsquo;s technology falls short — which changes what I can
+      responsibly design around. I understand the dōjin manga audience far
+      better than any market report could teach. And it honed my interaction
+      design at the detail level: defining an AI image-generation GUI flow
+      that stays simple for a casual creator yet flexible enough for a pro
+      is exactly the kind of problem where every small decision shows.</p>
+      <p>And the strategic lesson: cultural specificity is a product
+      strategy. Kokorolab doesn&rsquo;t try to beat the giant generic tools at
+      everything — it wins with an audience the giants don&rsquo;t see, by taking
+      one culturally rooted behavior seriously. That&rsquo;s the same lesson my
+      enterprise localization work keeps teaching: the default is not the
+      world.</p>
+    </article>
+
+    <nav class="case-nav" aria-label="Case studies">
+      <a href="case-prompt-studio.html"><span class="dir">Previous</span>Prompt Studio: from developer tool to product</a>
+      <a class="next" href="case-phone.html"><span class="dir">Next</span>Designing a phone number component for global users</a>
+    </nav>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Boyi Yang</p>
+      <div class="foot-links">
+        <a href="mailto:byang03@gmail.com">byang03@gmail.com</a>
+        <a href="https://www.linkedin.com/in/yangboyi/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+
+  <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"></button>
+  <script src="script.js"></script>
+</body>
+</html>

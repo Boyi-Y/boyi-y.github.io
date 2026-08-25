@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Enhance, designed twice — Boyi Yang</title>
+  <meta name="description" content="Case study: designing NetSuite's AI writing assistance twice — once under legacy constraints, once data-driven for the next-generation platform, ending as a design-system component.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.dataset.theme = saved;
+    })();
+  </script>
+</head>
+<body>
+  <main>
+    <header class="site-header compact">
+      <p class="logotype-small"><a href="index.html">Boyi Yang</a></p>
+      <nav class="site-nav" aria-label="Site">
+        <div class="nav-group">
+          <a href="index.html#work">Work</a>
+          <a href="about.html">About</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="case-head">
+      <p class="eyebrow">Product work · Design systems &amp; AI</p>
+      <h1>Text Enhance, designed twice</h1>
+      <p class="sub">The same AI writing-assistance feature under two opposite
+      sets of constraints — shipped in the legacy product, then redesigned
+      from data for NetSuite Next and defined as a design-system
+      component.
+      <a href="https://www.netsuite.com/portal/products/artificial-intelligence-ai/text-enhance.shtml" target="_blank" rel="noopener">See the official product page →</a></p>
+      <div class="tags"><span>AI</span><span>Design systems</span></div>
+      <p class="nda-note">Text Enhance is a publicly released feature;
+      screens shown with sample data, telemetry recreated in relative
+      proportions.</p>
+    </div>
+
+    <div class="tldr">
+      <dl>
+        <dt>Role</dt>
+        <dd>Lead designer</dd>
+        <dt>When</dt>
+        <dd>2023–2025</dd>
+        <dt>Scope</dt>
+        <dd>Text Enhance in legacy NetSuite → data-driven redesign for
+        NetSuite Next → full design-system component definition</dd>
+        <dt>Outcome</dt>
+        <dd>Shipped to general availability; multi-language prototype demoed
+        in a SuiteWorld 2024 keynote; componentized so other teams inherit
+        the behavior</dd>
+      </dl>
+    </div>
+
+    <article class="prose">
+      <h2>Why designing it twice is the story</h2>
+      <p class="lead">NetSuite runs two product streams: the established
+      product used by tens of thousands of businesses today, and NetSuite
+      Next — a ground-up revamp of the design system, navigation, and
+      underlying structure, built AI-ready. I designed Text Enhance for both,
+      and the contrast between the two rounds is what makes this project
+      worth reading.</p>
+
+      <h2>Round one: ship AI inside a legacy product</h2>
+      <p>The brief was to add Text Enhance to the existing NetSuite using only
+      existing components — no new patterns, no platform changes. The real
+      design work wasn&rsquo;t drawing screens; it was deciding <em>where AI
+      belongs</em> in a dense enterprise form. We attached the entry point to
+      the field level, not as a global feature, so assistance appears exactly
+      where writing happens — within the constraints the old UI allowed.</p>
+
+      <div class="figure zoom">
+        <img src="media/TextEnhance/text-enhance-legacy.png" alt="Round one: Text Enhance in the legacy NetSuite UI — an Inventory Item record page where the Purchase Description field's small icon opens a flat menu with Clean up, Generate, Make longer, Make shorter, and grayed-out Undo and Redo.">
+        <p class="figcap">Round one, in the legacy product: assistance
+        attached to the field, but the entry point is a small icon and the
+        flat menu mixes generation actions with Undo and Redo — everything
+        the redesign would later fix.</p>
+      </div>
+
+      <h2>Round two: redesign it from data</h2>
+      <p>With the constraint lifted for NetSuite Next, I didn&rsquo;t start from
+      the old design — I started from evidence.</p>
+      <ol class="steps">
+        <li><strong>Read the data.</strong> I pulled usage telemetry: which
+        fields and which record types actually used Text Enhance. The answer
+        was concentrated — customer-support emails, item descriptions, and
+        notes dominated. That told us who the real users were and killed
+        several hypothetical use cases before they cost us design effort. The
+        action telemetry also showed which AI actions people actually used,
+        so the menu earned its structure from behavior, not guesswork.</li>
+        <li><strong>Propose against the old design&rsquo;s weaknesses.</strong> In
+        the legacy version, AI actions hid behind a small icon and mixed
+        generation actions with Undo and Redo in one flat menu. The proposal
+        made the primary action visible — a Generate button sitting on the
+        field itself, with hint text and a character budget — and reorganized
+        the action set around observed intent — Clean up leading (it
+        dominated the telemetry), Make longer, Make shorter, and a new
+        Translate submenu — with Undo and Redo separated from generation
+        actions at last. The trade-off we debated: a visible
+        button on every eligible field risks clutter in an already dense UI;
+        hiding it risks the discoverability failure we&rsquo;d already measured.
+        We chose visibility on high-usage field types, grounded in the
+        telemetry from step one.</li>
+        <li><strong>Define it as a system, not a screen.</strong> The final
+        step was writing the design-system definition: component usage and
+        types, interaction spec, responsive behavior, and accessibility
+        notes — so any team adding AI writing assistance anywhere in NetSuite
+        Next inherits the same behavior without asking me.</li>
+      </ol>
+
+      <div class="figure" role="img" aria-label="Two bar charts recreated from the usage telemetry. Left: where Text Enhance is used, by field — customer-support messages lead by far, followed by outgoing messages, then notes, purchase descriptions, formulas, and a tail of other fields. Right: which AI actions people use — Clean up on the whole text dominates, followed by Clean up on a selection, then Undo, Make shorter, and Make longer with small shares.">
+        <svg viewBox="0 0 940 280" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+          <!-- left: field distribution -->
+          <text x="0" y="16" font-size="10" letter-spacing="1.4" fill="var(--fg-muted)">WHERE IT&rsquo;S USED — BY FIELD</text>
+          <g font-size="11.5" fill="var(--fg)" text-anchor="end">
+            <text x="168" y="62">Message (support email)</text>
+            <text x="168" y="96">Outgoing message</text>
+            <text x="168" y="130">Note</text>
+            <text x="168" y="164">Purchase description</text>
+            <text x="168" y="198">Formula</text>
+            <text x="168" y="232">All other fields</text>
+          </g>
+          <g fill="var(--accent)" fill-opacity="0.85">
+            <path d="M180,50 h256 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-256 z"/>
+            <path d="M180,84 h204 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-204 z"/>
+            <path d="M180,118 h79 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-79 z"/>
+            <path d="M180,152 h61 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-61 z"/>
+            <path d="M180,186 h43 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-43 z"/>
+            <path d="M180,220 h53 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-53 z"/>
+          </g>
+          <line x1="180" y1="44" x2="180" y2="242" stroke="var(--rule-faint)" stroke-width="1"/>
+          <!-- right: action distribution -->
+          <text x="490" y="16" font-size="10" letter-spacing="1.4" fill="var(--fg-muted)">WHICH ACTIONS PEOPLE USE</text>
+          <g font-size="11.5" fill="var(--fg)" text-anchor="end">
+            <text x="658" y="62">Clean up (whole text)</text>
+            <text x="658" y="96">Clean up (selection)</text>
+            <text x="658" y="130">Undo</text>
+            <text x="658" y="164">Make shorter</text>
+            <text x="658" y="198">Make longer</text>
+          </g>
+          <g fill="var(--accent)" fill-opacity="0.85">
+            <path d="M670,50 h256 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-256 z"/>
+            <path d="M670,84 h139 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-139 z"/>
+            <path d="M670,118 h35 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-35 z"/>
+            <path d="M670,152 h19 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-19 z"/>
+            <path d="M670,186 h17 a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-17 z"/>
+          </g>
+          <line x1="670" y1="44" x2="670" y2="208" stroke="var(--rule-faint)" stroke-width="1"/>
+          <!-- insight -->
+          <text x="0" y="270" font-size="11" fill="var(--accent)" font-style="italic">The concentration is the finding: a few fields and one action carry most of the usage — so they earned the visible button.</text>
+        </svg>
+        <p class="figcap">The telemetry behind step one, recreated with
+        relative proportions — exact figures are confidential. Support
+        messages dominate the fields; Clean up dominates the actions.</p>
+      </div>
+
+      <h2>The multi-language moment</h2>
+      <p>Working from Singapore on a global product, I pushed Text Enhance
+      beyond English: I designed the Translate action and co-created the
+      multi-language Text Enhance prototype that was demoed in a SuiteWorld
+      2024 keynote — AI writing assistance that meets international users in
+      their own language.</p>
+
+      <div class="figure zoom">
+        <img src="media/TextEnhance/text-enhance-next.png" alt="Round two: the Text Enhance component in NetSuite Next — a Purchase Description field with generated product copy, a visible Generate split-button on the field, and its menu open showing Clean up, Make longer, Make shorter, and Translate to with a submenu of English, German, and Japanese.">
+        <p class="figcap">Round two, in NetSuite Next: the Generate button
+        lives visibly on the field, and the menu is generation-only —
+        Clean up, Make longer, Make shorter, and Translate to English,
+        German, or Japanese.</p>
+      </div>
+
+      <h2>Outcome</h2>
+      <ul class="outcomes">
+        <li>Shipped to general availability — now an official
+        <a href="https://www.netsuite.com/portal/products/artificial-intelligence-ai/text-enhance.shtml" target="_blank" rel="noopener">NetSuite AI product</a> —
+        and iterated on customer feedback.</li>
+        <li>Multi-language prototype demoed in a SuiteWorld 2024 keynote.</li>
+        <li>Full component definition adopted into the NetSuite Next design
+        system — usage, types, interaction, responsive, accessibility.</li>
+      </ul>
+
+      <h2>What I learned</h2>
+      <p>Telemetry is a designer&rsquo;s best negotiating tool: every debate about
+      visibility, placement, or scope got shorter once we could point at what
+      users actually did. And constraints are clarifying — the legacy round
+      taught us exactly what the redesign had to fix, which is a research
+      method in itself.</p>
+    </article>
+
+    <nav class="case-nav" aria-label="Case studies">
+      <a href="case-japan.html"><span class="dir">Previous</span>Compliance with an experience dividend</a>
+      <a class="next" href="case-prompt-studio.html"><span class="dir">Next</span>Prompt Studio: from developer tool to product</a>
+    </nav>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Boyi Yang</p>
+      <div class="foot-links">
+        <a href="mailto:byang03@gmail.com">byang03@gmail.com</a>
+        <a href="https://www.linkedin.com/in/yangboyi/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+
+  <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"></button>
+  <script src="script.js"></script>
+</body>
+</html>
