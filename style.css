@@ -61,7 +61,7 @@ body {
 main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 44px 48px 96px;
+  padding: 28px 48px 96px;
 }
 
 a {
@@ -82,14 +82,14 @@ a:hover { text-decoration-color: currentColor; }
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 72px;
+  margin-bottom: 32px;
 }
 
 .logotype {
   font-family: var(--font-display);
   font-weight: 800;
   font-style: italic;
-  font-size: clamp(48px, 8vw, 96px);
+  font-size: clamp(40px, 6vw, 60px);
   line-height: 1;
   letter-spacing: -0.02em;
 }
@@ -131,32 +131,32 @@ a:hover { text-decoration-color: currentColor; }
 .site-nav a[aria-current="page"] { color: var(--fg-muted); }
 
 /* ---------- Home: hero ---------- */
-.hero { max-width: 720px; margin-bottom: 40px; }
+.hero { max-width: 740px; margin-bottom: 20px; }
 
 .hero-kicker {
   color: var(--fg-muted);
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   font-size: 15px;
 }
 
 .hero h2 {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(28px, 4.2vw, 44px);
+  font-size: clamp(26px, 3.6vw, 38px);
   line-height: 1.18;
   letter-spacing: -0.015em;
-  margin-bottom: 24px;
+  margin-bottom: 14px;
 }
 
-.hero p { max-width: 620px; color: var(--fg); }
+.hero p { max-width: 700px; color: var(--fg); }
 
 /* ---------- Proof strip ---------- */
 .proof {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 0;
-  margin: 40px 0 88px;
-  padding: 14px 0;
+  margin: 20px 0 44px;
+  padding: 12px 0;
   border-top: 1px solid var(--rule-faint);
   border-bottom: 1px solid var(--rule-faint);
   color: var(--fg-muted);
@@ -184,7 +184,7 @@ a:hover { text-decoration-color: currentColor; }
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--fg-muted);
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
 .case-card {
@@ -192,14 +192,14 @@ a:hover { text-decoration-color: currentColor; }
   grid-template-columns: 1fr 224px;
   gap: 40px;
   align-items: center;
-  padding: 36px 0 40px;
+  padding: 26px 0 30px;
   border-top: 1px solid var(--rule-faint);
   text-decoration: none;
 }
 
 .case-card .card-thumb {
   width: 100%;
-  height: 172px;
+  height: 156px;
   object-fit: cover;
   object-position: center top;
   border-radius: 8px;
