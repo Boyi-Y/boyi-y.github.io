@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BPI: a heuristic review of 16 banking sites — Boyi Yang</title>
+  <meta name="description" content="Case study: a UX consultancy engagement for Bank of the Philippine Islands — auditing 16 digital properties against six heuristic criteria, and turning 189 findings into a redesign roadmap.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20260930k">
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.dataset.theme = saved;
+    })();
+  </script>
+</head>
+<body>
+  <main>
+    <header class="site-header compact">
+      <p class="logotype-small"><a href="index.html">Boyi Yang</a></p>
+      <nav class="site-nav" aria-label="Site">
+        <div class="nav-group">
+          <a href="index.html#work">Work</a>
+          <a href="about.html">About</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="case-head">
+      <p class="eyebrow">Product work · UX consultancy</p>
+      <h1>BPI: a heuristic review of 16 banking&nbsp;sites</h1>
+      <p class="sub">A consultancy engagement with no design deliverable. The
+      output was a point of view: 189 findings across a bank&rsquo;s entire
+      digital estate, rated by what each problem would cost a real user, and a
+      roadmap for the redesign that followed.</p>
+      <p class="figcap">Findings shown at pattern level. This review dates
+      from 2016&ndash;2017; the sites have since been redesigned.</p>
+    </div>
+
+    <div class="tldr">
+      <dl>
+        <dt>Role</dt>
+        <dd>UX designer &mdash; heuristic evaluation, cross-site analysis,
+        and the research-to-design roadmap; one of two evaluators</dd>
+        <dt>When</dt>
+        <dd>2016&ndash;2017, in two waves</dd>
+        <dt>Client</dt>
+        <dd>Bank of the Philippine Islands &mdash; one of the country&rsquo;s
+        oldest banks, with 16 separate public websites</dd>
+        <dt>Outcome</dt>
+        <dd>A prioritised, evidence-backed case for what the redesign had to
+        fix &mdash; and the sequence for getting there</dd>
+      </dl>
+    </div>
+
+    <article class="prose">
+      <h2>The brief: know what is broken before you redraw it</h2>
+      <p class="lead">BPI came to us ahead of a redesign. The bank had
+      accumulated sixteen public websites over the years: a main portal plus
+      separate properties for cards, loans, trading, asset management,
+      insurance, a foundation, a magazine, an overseas arm. Each had been built
+      at a different time, by different people, to different standards.</p>
+      <p>The job was a heuristic review &mdash; not to design anything, but to
+      judge all sixteen against one consistent standard: what was wrong, how
+      badly, and in what order to fix it.</p>
+
+      <h2>The method: six criteria, and severity defined by consequence</h2>
+      <p>A heuristic review is only as good as its framework. Without one,
+      it degrades into a list of things a designer happens to dislike &mdash;
+      which is easy for a client to dismiss, and rightly so. We fixed two
+      things up front.</p>
+      <p><strong>Six criteria, adapted from the Nielsen Norman Group&rsquo;s
+      usability heuristics</strong>, were applied identically to every site:</p>
+      <ol class="criteria">
+        <li>Navigation and information architecture</li>
+        <li>Homepage</li>
+        <li>Writing and content quality</li>
+        <li>Page layout and visual design</li>
+        <li>Forms and data entry</li>
+        <li>Help, feedback and error tolerance</li>
+      </ol>
+      <p>The same six, in the same order, sixteen times. That consistency is
+      what made the sites comparable at the end.</p>
+      <p>Each criterion was then <strong>crossed with a high / medium / low
+      severity rating</strong>. Severity was judged by what a problem cost the
+      user, not by how much it bothered the reviewer:</p>
+
+      <div class="figure" role="img" aria-label="Severity scale: High — the user won't be able or won't want to finish the task. Medium — the user can finish, but with moderate effort. Low — cosmetic or minor, fix if time allows.">
+        <svg viewBox="0 0 940 210" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+          <g>
+            <rect x="0" y="10" width="6" height="52" rx="3" fill="var(--accent)"/>
+            <text x="24" y="30" font-size="17" font-weight="600" fill="var(--fg)">High</text>
+            <text x="24" y="54" font-size="14.5" fill="var(--fg-muted)">The user won&rsquo;t be able &mdash; or won&rsquo;t want &mdash; to finish the task at all.</text>
+          </g>
+          <g>
+            <rect x="0" y="80" width="6" height="52" rx="3" fill="var(--accent)" opacity="0.55"/>
+            <text x="24" y="100" font-size="17" font-weight="600" fill="var(--fg)">Medium</text>
+            <text x="24" y="124" font-size="14.5" fill="var(--fg-muted)">The user can finish, but has to work around the problem to do it.</text>
+          </g>
+          <g>
+            <rect x="0" y="150" width="6" height="52" rx="3" fill="var(--accent)" opacity="0.25"/>
+            <text x="24" y="170" font-size="17" font-weight="600" fill="var(--fg)">Low</text>
+            <text x="24" y="194" font-size="14.5" fill="var(--fg-muted)">Cosmetic or minor. Fix it if there is time left in the project.</text>
+          </g>
+        </svg>
+        <p class="figcap">The rating scale, defined in the report itself. Tying
+        severity to user consequence is what turns an opinion into a triage
+        list a product owner can act on.</p>
+      </div>
+
+      <p>The criteria and severity ratings also gave each site a scorecard: a
+      shape that could be compared across the estate rather than another page of
+      notes.</p>
+
+      <h3>One site&rsquo;s scorecard</h3>
+      <div class="figure radar" role="img" aria-label="Radar chart of one site's scores across the six criteria, higher is better: Home Page 48%, Navigation and IA 38%, Forms and Data Entry 39%, Writing and Content Quality 30%, Page Layout and Visual Design 64%, Help Feedback and Error Tolerance 39%.">
+        <svg viewBox="0 60 760 500" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+          <!-- rings (25 / 50 / 75 / 100%) -->
+          <g fill="none" stroke="var(--rule-faint)" stroke-width="1">
+            <polygon points="400,252.5 441.1,276.25 441.1,323.75 400,347.5 358.9,323.75 358.9,276.25"/>
+            <polygon points="400,205 482.25,252.5 482.25,347.5 400,395 317.75,347.5 317.75,252.5"/>
+            <polygon points="400,157.5 523.4,228.75 523.4,371.25 400,442.5 276.6,371.25 276.6,228.75"/>
+            <polygon points="400,110 564.5,205 564.5,395 400,490 235.5,395 235.5,205"/>
+          </g>
+          <!-- spokes -->
+          <g stroke="var(--rule-faint)" stroke-width="1">
+            <line x1="400" y1="300" x2="400" y2="110"/>
+            <line x1="400" y1="300" x2="564.5" y2="205"/>
+            <line x1="400" y1="300" x2="564.5" y2="395"/>
+            <line x1="400" y1="300" x2="400" y2="490"/>
+            <line x1="400" y1="300" x2="235.5" y2="395"/>
+            <line x1="400" y1="300" x2="235.5" y2="205"/>
+          </g>
+          <!-- data polygon -->
+          <polygon points="400,208.8 462.5,263.9 464.2,337 400,357 294.7,360.8 335.8,263"
+                   fill="var(--accent)" fill-opacity="0.16" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+          <!-- ring % labels up the top spoke -->
+          <g font-size="12" font-style="italic" fill="var(--fg-muted)" text-anchor="end">
+            <text x="392" y="304">0%</text>
+            <text x="392" y="256">25%</text>
+            <text x="392" y="209">50%</text>
+            <text x="392" y="161">75%</text>
+            <text x="392" y="114">100%</text>
+          </g>
+          <!-- axis labels -->
+          <text x="400" y="90" text-anchor="middle" font-size="15" fill="var(--fg)">Home Page&nbsp;&nbsp;<tspan font-weight="700" fill="var(--accent)">48%</tspan></text>
+
+          <text x="582" y="201" font-size="15" fill="var(--fg)">Navigation &amp; IA</text>
+          <text x="582" y="223" font-size="15" font-weight="700" fill="var(--accent)">38%</text>
+
+          <text x="582" y="391" font-size="15" fill="var(--fg)">Forms &amp; Data Entry</text>
+          <text x="582" y="413" font-size="15" font-weight="700" fill="var(--accent)">39%</text>
+
+          <text x="400" y="516" text-anchor="middle" font-size="15" fill="var(--fg)">Writing &amp; Content Quality</text>
+          <text x="400" y="538" text-anchor="middle" font-size="15" font-weight="700" fill="var(--accent)">30%</text>
+
+          <text x="218" y="391" text-anchor="end" font-size="15" fill="var(--fg)">Page Layout &amp; Visual Design</text>
+          <text x="218" y="413" text-anchor="end" font-size="15" font-weight="700" fill="var(--accent)">64%</text>
+
+          <text x="218" y="193" text-anchor="end" font-size="15" fill="var(--fg)">Help, Feedback &amp; Error</text>
+          <text x="218" y="211" text-anchor="end" font-size="15" fill="var(--fg)">Tolerance</text>
+          <text x="218" y="233" text-anchor="end" font-size="15" font-weight="700" fill="var(--accent)">39%</text>
+        </svg>
+        <p class="figcap">Higher is better: strongest on page layout and visual
+        design; weakest on writing and content quality.</p>
+      </div>
+
+      <p>Two evaluators reviewed independently and then reconciled their
+      findings. That mattered: a single reviewer&rsquo;s blind spots become the
+      report&rsquo;s blind spots.</p>
+      <p>Every finding was paired with a specific recommendation and, where
+      useful, a live example from another bank that had already solved it:
+      CommBank, BBVA, Santander, DBS.</p>
+
+      <h3>What a finding looked like</h3>
+      <p>Each entry paired the problem on the live site with an observation, a
+      severity rating, and a specific recommendation. Four examples:</p>
+      <div class="screens pairs">
+        <figure><img src="media/BPI/bpi-eg-homepage.jpg" alt="Heuristic review slide for the Homepage criterion, rated High: the BPI homepage with the personal/business/overseas profile switcher highlighted. Observation — the difference between the three profiles in the main navigation is not obvious, so users may not realise the content changes with the selected section. Recommendation — make product categories clearly visible on the homepage and organise content around the user's tasks." loading="lazy"><figcaption><strong>Homepage · High</strong> &mdash; the profile switcher silently changed the whole page; users didn&rsquo;t notice.</figcaption></figure>
+        <figure><img src="media/BPI/bpi-eg-login.jpg" alt="Heuristic review slide for Forms and Data Entry, rated High: the login error dialog on BPI Express Online. Observation — the error message is too long, is not mobile friendly, doesn't say which field is wrong, and has an accusative tone. Recommendation — make it straightforward, adapt it to mobile and show it next to the field, and write it in an impersonal tone." loading="lazy"><figcaption><strong>Forms &amp; data entry · High</strong> &mdash; a long, accusatory login error that never said which field was wrong.</figcaption></figure>
+        <figure><img src="media/BPI/bpi-eg-form.jpg" alt="Heuristic review slide for Forms and Data Entry, rated High: the Express Online enrolment form. Observation — field lengths don't match the content expected, fields don't show the required format, the account field is repeated and not compulsory yet shows four rows, and labels sit far from their inputs. Recommendation — size fields to their content, show format examples, start with one account row, and move labels closer." loading="lazy"><figcaption><strong>Forms &amp; data entry · High</strong> &mdash; field sizes, formats and labels all working against the person filling it in.</figcaption></figure>
+        <figure><img src="media/BPI/bpi-eg-layout.jpg" alt="Heuristic review slide for Page Layout and Visual Design, rated Medium: the BPI homepage banner. Observation — some elements look clickable but the whole slide is clickable, button styles vary from slide to slide, and overlapping clickable areas lead to different purposes. Recommendation — unify the button style and simplify the wording to describe the action." loading="lazy"><figcaption><strong>Page layout &amp; visual design · Medium</strong> &mdash; inconsistent buttons and overlapping click targets on the hero banner.</figcaption></figure>
+      </div>
+      <p class="nda-note">Screens are BPI&rsquo;s public sites as they stood in
+      2016&ndash;2017, shown with the review&rsquo;s own annotations; the sites
+      have since been redesigned.</p>
+
+      <h2>The scale of it</h2>
+      <p>The work ran in two waves &mdash; eleven smaller properties first,
+      then a deeper review of the five core sites (Express Online, Cards,
+      Loans, Trade, Asset Management) plus their behaviour on mobile.</p>
+
+      <div class="figure" role="img" aria-label="Chart: of 189 findings across 16 sites, roughly half were rated high severity, around a third medium, and the remainder low.">
+        <svg viewBox="0 0 940 250" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+          <g font-size="13" fill="var(--fg-muted)">
+            <text x="0" y="14" letter-spacing="1.4">FINDINGS BY SEVERITY &mdash; 189 ACROSS 16 SITES</text>
+          </g>
+          <g>
+            <text x="0" y="62" font-size="15" fill="var(--fg)">High</text>
+            <rect x="110" y="46" width="430" height="24" rx="4" fill="var(--accent)"/>
+            <text x="556" y="63" font-size="14.5" fill="var(--fg-muted)">about half of everything found</text>
+          </g>
+          <g>
+            <text x="0" y="112" font-size="15" fill="var(--fg)">Medium</text>
+            <rect x="110" y="96" width="267" height="24" rx="4" fill="var(--accent)" opacity="0.55"/>
+          </g>
+          <g>
+            <text x="0" y="162" font-size="15" fill="var(--fg)">Low</text>
+            <rect x="110" y="146" width="158" height="24" rx="4" fill="var(--accent)" opacity="0.25"/>
+          </g>
+          <line x1="0" y1="196" x2="940" y2="196" stroke="var(--rule-faint)" stroke-width="1"/>
+          <text x="0" y="226" font-size="15" fill="var(--fg)">Navigation and information architecture was the single worst-performing criterion across the estate.</text>
+        </svg>
+        <p class="figcap">A high-severity finding is not a polish item &mdash; it
+        represents a customer who may not complete the task at all. About half
+        the estate was in that category.</p>
+      </div>
+
+      <h2>The finding that mattered was not on any one site</h2>
+      <p>Reviewing sixteen properties the same way surfaced something no
+      single-site audit would have caught: the worst problems lived in the
+      spaces <em>between</em> the sites.</p>
+      <ul class="outcomes">
+        <li><strong>The estate did not connect.</strong> The main portal
+        duplicated the content of the product sites rather than linking to
+        them &mdash; a customer could view and apply for a card without ever
+        being sent to the cards site. Only one of the four product sites
+        linked back to the portal at all.</li>
+        <li><strong>One brand, sixteen identities.</strong> Headers, page
+        titles, navigation, even the privacy policy rendered differently
+        across properties. For a bank whose core asset is the sense that it
+        is solid and consistent, the digital estate was communicating the
+        opposite.</li>
+        <li><strong>The navigation was organised around the bank, not the
+        customer.</strong> The first level of navigation asked users to
+        classify themselves &mdash; personal, business, overseas &mdash;
+        pushing the actual products, the thing people came for, down to the
+        third level.</li>
+        <li><strong>Mobile was an afterthought with a measurable cost.</strong>
+        Four of the five core sites had a fixed 900px width. Analytics showed
+        the consequence: bounce rate climbed from 55% on desktop to 65% on
+        mobile, while sessions were nearly a minute shorter.</li>
+      </ul>
+      <p>That mobile number is the one I would still lead with today. It turned
+      &ldquo;the site isn&rsquo;t responsive&rdquo; from a design preference into
+      a business fact &mdash; and the evidence was already sitting there in
+      Analytics for anyone willing to look.</p>
+
+      <h2>The consultancy&rsquo;s real deliverable: the next move</h2>
+      <p>A findings report that ends at findings puts the hardest work back on
+      the client. So the engagement closed with a roadmap rather than a verdict:
+      an honest account of what we knew, what we still needed to learn, and what
+      each remaining step would cost.</p>
+      <p>We had the heuristic review and a twenty-question stakeholder survey
+      across the bank&rsquo;s business units. We were still missing the customer
+      side: deeper interpretation of the analytics, and answers only the client
+      could provide. One survey finding framed the whole strategy question
+      &mdash; BPI was trusted <em>because</em> it had been solid for 165 years,
+      and seen as unadventurous for exactly the same reason. That is not a
+      problem a navigation fix addresses; it needed to be named before
+      wireframes started.</p>
+      <p>From there, the sequence was explicit, with an estimate attached to
+      each step:</p>
+      <p class="sequence">analytics&nbsp;+&nbsp;client input &rarr; personas
+      &rarr; user scenarios &rarr; web strategy &rarr; sitemap &rarr;
+      wireframes</p>
+      <p>Research first, and slow on purpose. The argument was that the length
+      of the research stage is what makes everything after it faster.</p>
+
+      <h2>What I learned</h2>
+      <p>This is the only time I have spent this long on a pure heuristic review
+      &mdash; and the only project in this portfolio where I designed nothing.
+      What the client was paying for was not a list of problems; it was a way
+      through them. Every finding came with a recommendation, and the
+      recommendations came in an order.</p>
+      <p>Working this closely with the heuristic principles made them second
+      nature. I still reach for the same lens in team design critiques, and
+      whenever we are improving an existing product.</p>
+      <p>It also taught me how to make scattered observations presentable
+      &mdash; to turn pages of notes into something a client can hold: a
+      severity scale, a per-site scorecard, a spider chart that shows a site&rsquo;s
+      shape at a glance.</p>
+      <p>And it is rare to look at a product from this far out &mdash; sixteen
+      sites, different business lines, responsive behaviour as a dimension of its
+      own. The brief was broad to the point of being unwieldy. What I am proudest
+      of is that we still landed it as something clear and logical, with advice at
+      a strategic level: not just what was broken, but where the bank should go
+      next.</p>
+    </article>
+
+    <nav class="case-nav" aria-label="Case studies">
+      <a href="case-pias.html"><span class="dir">Previous</span>PIAS: an advisor-facing financial planning tool</a>
+      <a class="next" href="earlier-work.html"><span class="dir">More</span>Earlier work</a>
+    </nav>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Boyi Yang</p>
+      <div class="foot-links">
+        <a href="mailto:byang03@gmail.com">byang03@gmail.com</a>
+        <a href="https://www.linkedin.com/in/yangboyi/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+
+  <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"></button>
+  <script src="script.js?v=20260930k"></script>
+</body>
+</html>

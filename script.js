@@ -17,7 +17,7 @@ toggle.addEventListener('click', () => {
 });
 
 // ---------- Lightbox for zoomable figures ----------
-document.querySelectorAll('.figure.zoom img').forEach((img) => {
+document.querySelectorAll('.figure.zoom img, .figure.wide img, .screens img').forEach((img) => {
   img.addEventListener('click', () => {
     const overlay = document.createElement('div');
     overlay.className = 'lightbox';

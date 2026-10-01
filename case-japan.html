@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compliance with an experience dividend — Boyi Yang</title>
-  <meta name="description" content="Case study: Japan's tax invoice reform as a catalyst to redesign the Invoice Summary experience end-to-end.">
+  <title>Japan Invoice Summary: faster generation without losing financial control — Boyi Yang</title>
+  <meta name="description" content="Case study: Japan Invoice Summary at NetSuite — 74 minutes to generate, 94% of it transaction linking. The obvious fix would have cost finance users their audit trail, so we made the link lightweight instead. Generation fell from 8m21s to 39s.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20260930k">
   <script>
     (function () {
       const saved = localStorage.getItem('theme');
@@ -31,13 +31,10 @@
 
     <div class="case-head">
       <p class="eyebrow">Product work · Enterprise delivery</p>
-      <h1>Compliance with an experience dividend</h1>
-      <p class="sub">Japan&rsquo;s tax invoice reform gave every ERP a hard
-      deadline. We used it to redesign the Invoice Summary experience
-      end-to-end — compliance as the floor, not the goal.</p>
-      <div class="tags"><span>Enterprise delivery</span><span>Research</span><span>Localization</span></div>
-      <p class="nda-note">Details abstracted to respect confidentiality;
-      regulatory context is public.</p>
+      <h1>Faster generation without losing financial&nbsp;control</h1>
+      <p class="sub">Japan&rsquo;s Invoice Summary took 74 minutes to run and
+      almost all of it went to one step. The obvious fix would have cost
+      finance users the evidence they rely on.</p>
     </div>
 
     <div class="tldr">
@@ -45,167 +42,204 @@
         <dt>Role</dt>
         <dd>Lead designer, Japan localization</dd>
         <dt>When</dt>
-        <dd>2022–2025</dd>
+        <dd>2022&ndash;2025 · Oracle NetSuite</dd>
         <dt>Context</dt>
-        <dd>Japan&rsquo;s Qualified Invoice System (effective Oct 2023) changed
-        invoicing law for every business in the country</dd>
-        <dt>Outcome</dt>
-        <dd>Customers compliant on deadline — and the Invoice Summary
-        experience redesigned end-to-end instead of patched</dd>
+        <dd>Japan&rsquo;s Qualified Invoice System · October 2023</dd>
+        <dt>Impact</dt>
+        <dd>Average generation time 8m 21s &rarr; 39s, with traceability intact</dd>
       </dl>
     </div>
 
     <article class="prose">
-      <h2>The situation</h2>
-      <p class="lead">In Japan, businesses issue a monthly consolidated
-      &ldquo;invoice summary&rdquo; — a document format deeply embedded in local
-      business culture. Japan&rsquo;s Qualified Invoice System, effective October
-      2023, imposed strict new requirements on tax invoices. Every ERP had to
-      comply. Deadline fixed, scope legally defined.</p>
-      <p>The easy path: bolt the new tax fields onto the existing flow. But the
-      existing Invoice Summary experience carried a decade of accumulated
-      friction:</p>
-      <ul>
-        <li><strong>Generation was painfully slow.</strong> Customers
-        complained about long waits; some partners had built workarounds —
-        running saved searches instead of the feature, scheduling generation
-        overnight with RPA, even rebuilding the whole flow in Microsoft
-        Access. When your customers engineer escape routes around your
-        feature, the feature is the problem.</li>
-        <li><strong>The design was ten years old</strong> and no longer fit how
-        Japanese businesses actually work: no way to customize the template
-        (in Japan, invoice summary layouts are industry-specific — one
-        standard template fits almost nobody), no draft or preview before
-        generation, and no easy way to adjust a summary after generation — in
-        a culture where the generated PDF is treated as the definitive legal
-        record and checking it before release is non-negotiable.</li>
-      </ul>
-      <p><strong>We made a deliberate bet: use the compliance mandate as the
-      catalyst to redesign the experience itself.</strong></p>
+      <h2>Overview</h2>
+      <p class="lead">In Japan it is common for companies to invoice customers
+      and handle incoming payments through <em>shimeseikyu</em>, a billing
+      practice unique to the country. A Japan invoice summary is the document
+      that practice produces: a consolidated bill grouping multiple
+      transactions &mdash; invoices, sales orders, credit memos &mdash; for a
+      single customer over one billing cycle, typically a month. NetSuite&rsquo;s
+      Japan Invoice Summary was an essential but legacy workflow: a long
+      process, with real uncertainty about how to review, consolidate and
+      verify the result.</p>
 
-      <h2>Question the expensive feature before optimizing it</h2>
-      <p>The slowness had a specific cause: during generation, the system
-      built a link between every invoice transaction and its summary.
-      Engineering saw a performance problem to optimize. We asked a different
-      question: <em>does anyone actually use those links?</em></p>
-      <p>I framed it as a testable hypothesis — users verify their summaries
-      from the PDF and their own saved searches, not by clicking through
-      transaction links — and we put mockups in front of users: the current
-      design with its long generation time versus a linkless design that
-      generated fast. That reframing changed the solution space entirely:
-      instead of spending engineering months optimizing how links were built,
-      we could stop paying for something users didn&rsquo;t value.</p>
-      <p>It&rsquo;s my favorite kind of design work — the screen barely changes,
-      but the product gets fundamentally better.</p>
-
-      <h2>Understand the real workflow, not the legal text</h2>
-      <ul>
-        <li>Journey mapping with the Professional Services team — the people
-        who see how customers actually configure and use invoice summaries —
-        structured around four explicit hypotheses: the unused links, the
-        one-summary-per-transaction rule, setup frequency, and the confusing
-        naming of &ldquo;standard&rdquo; versus &ldquo;consolidated&rdquo; summaries.</li>
-        <li>Customer and partner interviews, run in both English and Japanese,
-        which surfaced the cultural weight of the document: the invoice
-        summary PDF is the definitive version of the issued invoices, so
-        checking before release — and often sending a draft to the customer
-        first — is standard practice.</li>
-        <li>A design thinking workshop with dev &amp; PM to align everyone on
-        where the pain actually was.</li>
-      </ul>
-      <div class="figure" role="img" aria-label="Abstracted recreation of the Invoice Summary journey map: two personas — an accountant handling accounts payable, receivable, and monthly closing, and a system administrator handling setup — mapped across seven phases: configuration, day-to-day invoicing, generate invoice summary, check and recover from error, send to customer and follow up, archive, and customer payment. Pain points concentrate in the middle phases, from generation through sending.">
-        <svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
-          <!-- personas -->
-          <text x="0" y="14" font-size="10" letter-spacing="1.4" fill="var(--fg-muted)">PERSONAS</text>
-          <g>
-            <rect x="0" y="24" width="215" height="44" rx="7" fill="var(--card)" stroke="var(--rule-faint)"/>
-            <circle cx="22" cy="46" r="10" fill="var(--accent)" fill-opacity="0.18"/>
-            <text x="40" y="42" font-size="11.5" font-weight="600" fill="var(--fg)">Accountant</text>
-            <text x="40" y="58" font-size="10.5" fill="var(--fg-muted)">AP/AR, billing, monthly closing</text>
-          </g>
-          <g>
-            <rect x="227" y="24" width="215" height="44" rx="7" fill="var(--card)" stroke="var(--rule-faint)"/>
-            <circle cx="249" cy="46" r="10" fill="var(--accent)" fill-opacity="0.18"/>
-            <text x="267" y="42" font-size="11.5" font-weight="600" fill="var(--fg)">System administrator</text>
-            <text x="267" y="58" font-size="10.5" fill="var(--fg-muted)">Setup, configuration, maintenance</text>
-          </g>
-          <!-- phase headers -->
-          <g font-size="10.5" font-weight="600" fill="var(--fg)" text-anchor="middle">
-            <g><rect x="0" y="92" width="126" height="34" rx="6" fill="var(--accent)" fill-opacity="0.12"/><text x="63" y="106">1 · Configuration</text><text x="63" y="119" font-weight="400" fill="var(--fg-muted)" font-size="9.5">settings &amp; preferences</text></g>
-            <g><rect x="136" y="92" width="126" height="34" rx="6" fill="var(--accent)" fill-opacity="0.12"/><text x="199" y="106">2 · Invoicing</text><text x="199" y="119" font-weight="400" fill="var(--fg-muted)" font-size="9.5">day to day</text></g>
-            <g><rect x="272" y="92" width="126" height="34" rx="6" fill="var(--accent)" fill-opacity="0.22"/><text x="335" y="106">3 · Generate</text><text x="335" y="119" font-weight="400" fill="var(--fg-muted)" font-size="9.5">invoice summary</text></g>
-            <g><rect x="408" y="92" width="126" height="34" rx="6" fill="var(--accent)" fill-opacity="0.22"/><text x="471" y="106">4 · Check &amp; recover</text><text x="471" y="119" font-weight="400" fill="var(--fg-muted)" font-size="9.5">from error</text></g>
-            <g><rect x="544" y="92" width="126" height="34" rx="6" fill="var(--accent)" fill-opacity="0.22"/><text x="607" y="106">5 · Send &amp; follow up</text><text x="607" y="119" font-weight="400" fill="var(--fg-muted)" font-size="9.5">print, mail, email</text></g>
-            <g><rect x="680" y="92" width="126" height="34" rx="6" fill="var(--accent)" fill-opacity="0.12"/><text x="743" y="106">6 · Archive</text><text x="743" y="119" font-weight="400" fill="var(--fg-muted)" font-size="9.5">records &amp; storage</text></g>
-            <g><rect x="816" y="92" width="124" height="34" rx="6" fill="var(--accent)" fill-opacity="0.12"/><text x="878" y="106">7 · Payment</text><text x="878" y="119" font-weight="400" fill="var(--fg-muted)" font-size="9.5">reconciliation</text></g>
-          </g>
-          <!-- abstracted sticky stacks -->
-          <g fill="var(--fg-muted)" fill-opacity="0.16">
-            <g><rect x="10" y="140" width="106" height="24" rx="4"/><rect x="10" y="170" width="106" height="24" rx="4"/><rect x="10" y="200" width="106" height="24" rx="4"/></g>
-            <g><rect x="146" y="140" width="106" height="24" rx="4"/><rect x="146" y="170" width="106" height="24" rx="4"/></g>
-            <g><rect x="282" y="140" width="106" height="24" rx="4"/><rect x="282" y="170" width="106" height="24" rx="4"/><rect x="282" y="200" width="106" height="24" rx="4"/><rect x="282" y="230" width="106" height="24" rx="4"/></g>
-            <g><rect x="418" y="140" width="106" height="24" rx="4"/><rect x="418" y="170" width="106" height="24" rx="4"/><rect x="418" y="200" width="106" height="24" rx="4"/><rect x="418" y="230" width="106" height="24" rx="4"/><rect x="418" y="260" width="106" height="24" rx="4"/></g>
-            <g><rect x="554" y="140" width="106" height="24" rx="4"/><rect x="554" y="170" width="106" height="24" rx="4"/><rect x="554" y="200" width="106" height="24" rx="4"/><rect x="554" y="230" width="106" height="24" rx="4"/></g>
-            <g><rect x="690" y="140" width="106" height="24" rx="4"/><rect x="690" y="170" width="106" height="24" rx="4"/></g>
-            <g><rect x="826" y="140" width="104" height="24" rx="4"/><rect x="826" y="170" width="104" height="24" rx="4"/></g>
-          </g>
-          <!-- pain stars -->
-          <g font-size="13" fill="var(--accent)">
-            <text x="378" y="158">✱</text>
-            <text x="514" y="188">✱</text>
-            <text x="514" y="248">✱</text>
-            <text x="650" y="158">✱</text>
-            <text x="650" y="218">✱</text>
-          </g>
-          <!-- pain bracket -->
-          <g>
-            <path d="M 282 300 H 670" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
-            <path d="M 282 300 v -6 M 670 300 v -6" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
-            <text x="476" y="320" font-size="11" fill="var(--accent)" text-anchor="middle" font-style="italic">where the pain concentrated — slow generation, error recovery, manual sending</text>
-          </g>
-        </svg>
-        <p class="figcap">The Invoice Summary journey map, recreated in
-        abstract: two personas, seven phases, and the pain concentrated
-        between generating and sending. The original research board — built
-        with the Professional Services team — is confidential.</p>
+      <div class="figure wide zoom">
+        <img src="media/Japan/japan-what-is-summary.jpg" alt="How an invoice summary is produced in NetSuite: the Generate Invoice Summary screen where criteria are set, the Invoice Summary Generation Status screen showing the batch job queued, and the resulting consolidated PDF listing a parent company and its subsidiary with their transactions, totals and tax." loading="lazy">
+        <p class="figcap">Set the criteria, wait for the batch job, and the
+        result is one consolidated PDF per customer &mdash; every transaction
+        for the period on a single document.</p>
       </div>
 
-      <div class="pullquote">
-        <p>&ldquo;Usually, no new ideas from engineers&rsquo; side&hellip; with such a
-        workshop we can get various opinions from them.&rdquo;</p>
-        <cite>— Product manager, NetSuite Japan, after the workshop</cite>
+      <div class="split">
+        <div class="split-text">
+          <h2>What &ldquo;slow&rdquo; actually meant</h2>
+          <p>The top issue was the wait, and customers had been reporting it
+          for years. The product&rsquo;s answer was a banner: the process may
+          take some time, and you will be notified by email once generation is
+          complete.</p>
+          <p>The delay came from building the links between an invoice summary
+          and its transactions. The system also enforces an exclusive rule
+          &mdash; a transaction can belong to only one invoice summary, which
+          is what prevents duplicate invoicing. The side effect was punishing:
+          any change after generation meant deleting the summary and sitting
+          through the entire wait again.</p>
+          <p>So we measured it. Generating <strong>five invoice
+          summaries</strong>, one per customer across <strong>300
+          transactions</strong>, took <strong>74 minutes</strong>.</p>
+          <p>And that was five customers. We could not imagine what month-end
+          looked like for a business with hundreds of them.</p>
+        </div>
+
+        <div class="figure chart" role="img" aria-label="Breakdown of one 74-minute generation run: record creation takes 1.2 minutes, transaction linking takes 69.55 minutes — 94% of the run — and PDF generation takes 3.27 minutes.">
+            <svg viewBox="0 0 330 288" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+            <!-- one 74-minute run, to scale: 240px of bar = 74 minutes -->
+            <rect x="0" y="14" width="62" height="4" rx="1.5" fill="var(--accent)" opacity="0.6"/>
+            <rect x="0" y="18" width="62" height="225" rx="3" fill="var(--accent)"/>
+            <rect x="0" y="243" width="62" height="11" rx="1.5" fill="var(--accent)" opacity="0.6"/>
+            <text x="31" y="138" text-anchor="middle" font-size="21" font-weight="700" fill="var(--on-accent)">94%</text>
+
+            <line x1="66" y1="16" x2="80" y2="16" stroke="var(--rule)" stroke-width="1"/>
+            <text x="88" y="13" font-size="14.5" fill="var(--fg)">Record creation</text>
+            <text x="88" y="32" font-size="14.5" fill="var(--fg-muted)">1.2 min</text>
+
+            <line x1="66" y1="130" x2="80" y2="130" stroke="var(--accent)" stroke-width="1.4"/>
+            <text x="88" y="127" font-size="16" font-weight="600" fill="var(--fg)">Transaction linking</text>
+            <text x="88" y="159" font-family="Newsreader, Georgia, serif" font-size="28" font-weight="600" fill="var(--accent)">69.55 min</text>
+
+            <line x1="66" y1="249" x2="80" y2="249" stroke="var(--rule)" stroke-width="1"/>
+            <text x="88" y="246" font-size="14.5" fill="var(--fg)">PDF generation</text>
+            <text x="88" y="265" font-size="14.5" fill="var(--fg-muted)">3.27 min</text>
+
+            <text x="0" y="284" font-size="13" fill="var(--fg-muted)">74 minutes in total</text>
+          </svg>
+        </div>
       </div>
 
-      <h2>Design the compliance and the experience together</h2>
-      <ul>
-        <li>New tax invoice rules designed alongside a rethought Invoice
-        Summary flow, aimed squarely at the researched pain: preview before
-        generation so errors are caught early, easier adjustment of a
-        generated summary, and template customization for industry-specific
-        formats.</li>
-        <li>The Void Invoice Summary feature: instead of deleting (an audit
-        nightmare), voiding reverses the journal — compliance-safe <em>and</em>
-        clearer for accountants. This directly addressed the
-        delete-and-regenerate cycle users described in interviews.</li>
-        <li>Later, the SuiteTax SuiteApp revamp carried the redesign further,
-        building on our accumulated research.</li>
+      <h2>A different question</h2>
+      <p>Generation was slow because the system updated every individual
+      transaction to create the linkage between it and its summary. To
+      engineering this was a performance problem: months of work to make the
+      linking faster.</p>
+      <p>I asked something else, framed as a testable hypothesis:
+      <strong>do users actually need a link between an invoice summary and its
+      individual transactions?</strong> And if the link turned out to matter for
+      reconciliation, a second hypothesis followed: the linkage serves
+      reconciliation, not preview &mdash; nobody inspects the links themselves.
+      If that held, the linking did not have to be built while someone sat
+      watching a progress bar.</p>
+
+      <div class="figure wide">
+        <img src="media/Japan/japan-linkage.jpg" alt="Diagram of the data relationship: one invoice summary record connected to each of the individual invoice transactions it consolidates for that customer and period." loading="lazy">
+        <p class="figcap">A link is created between the invoice summary and each
+        of the invoices inside it.</p>
+      </div>
+
+      <h2>Research: understand the workflow before changing it</h2>
+      <p>To learn how Japanese customers actually manage invoice summaries
+      &mdash; and to assess the impact of the tax rule arriving in October 2023
+      &mdash; I ran <strong>four online interviews</strong>, two in English and
+      two in Japanese, each with one Japan customer or partner. Four insights
+      came out of them:</p>
+      <ul class="outcomes">
+        <li><strong>Customization.</strong> Customers need flexible invoice
+        summary templates, because formats and required fields vary by industry
+        and by company.</li>
+        <li><strong>Review and adjustment.</strong> They need to preview,
+        review and adjust a summary before finalising it &mdash; including
+        sharing drafts with their own customers for verification.</li>
+        <li><strong>Consolidation.</strong> Consolidated summaries are valuable
+        for companies with multiple subsidiaries, but limited grouping
+        flexibility and low awareness hold adoption back.</li>
+        <li><strong>Workarounds.</strong> Customers and partners run saved
+        searches to generate or cross-check summaries, purely to avoid having
+        to amend one after a long wait.</li>
+      </ul>
+      <p>I then led a hypothesis-led journey-map workshop with Japan
+      Professional Services partners. It showed that creating and managing
+      invoice summaries was a fragmented, highly manual experience. Users moved
+      across configuring invoice preferences, generating summaries, validating
+      information, sending documents, archiving records and reconciling
+      payments &mdash; relying on manual checks and workarounds throughout. The
+      hardest parts were understanding how configuration settings affected the
+      final invoice, making sure every relevant transaction was included,
+      recovering from errors, and tracing a consolidated summary back to its
+      individual invoices.</p>
+
+      <div class="figure wide">
+        <img src="media/Japan/japan-journey-map.jpg" alt="The Invoice Summary journey map: two personas — a mid-level accountant and a system administrator — mapped across seven phases from configuration and day-to-day invoicing through generating the summary, checking and recovering from errors, sending to the customer, archiving, and payment, with behaviours, pain points and opportunities under each phase." loading="lazy">
+        <p class="figcap">The journey map, built with the Japan Professional
+        Services team.</p>
+      </div>
+
+      <h2>The interviews that changed the answer</h2>
+      <p>The workshop was followed by finance-expert interviews, and they
+      challenged my first assumption directly. Finance users told us they
+      <em>do</em> review individual transactions &mdash; to reconcile totals,
+      confirm dates, identify omissions, and catch changes made after
+      generation. They confirmed the value of the rule that a transaction
+      belongs to exactly one invoice summary.</p>
+      <p>That reframed the problem. <strong>The link was not disposable. It
+      needed a more efficient workflow.</strong></p>
+
+      <h2>From insight to design direction</h2>
+      <h3>1. Redesign the flow</h3>
+      <p>The goal was never to hide the processing time. It was to remove an
+      unnecessary dependency from the user&rsquo;s path. Verification moves to
+      the front, where it can prevent a wasted run; linking moves to the back,
+      where nobody is waiting on it.</p>
+
+      <div class="figure wide diagram">
+        <img src="media/Japan/japan-flow-before.png" alt="The original Invoice Summary flow: set criteria, generate, wait while every transaction is linked, receive an email, download the PDF, and only then review it — with no preview before committing." loading="lazy">
+        <p class="figcap"><strong>Before</strong> &mdash; review was only possible
+        after generating and downloading.</p>
+      </div>
+
+      <div class="figure wide diagram">
+        <img src="media/Japan/japan-flow-after.png" alt="The redesigned Invoice Summary flow: set criteria, preview the pre-generation table, verify it, then generate — with transaction linking moved off the user's waiting path." loading="lazy">
+        <p class="figcap"><strong>After</strong> &mdash; preview and verification
+        come first, before anything is committed.</p>
+      </div>
+
+      <p>Rather than removing traceability, the solution introduced a
+      <strong>lightweight link</strong> between invoice summaries and
+      transactions, based on the finding that users do not inspect the link on
+      the transaction itself. That avoided costly per-transaction updates and
+      the user-event processing they triggered, while preserving the information
+      users need for review.</p>
+
+      <div class="screens bare">
+        <figure><img src="media/Japan/japan-linkage-before.png" alt="The invoice summary record before the change: the Custom tab holds a full transactions sublist, each row carrying a deprecated invoice summary link field, built by updating every transaction individually." loading="lazy"><figcaption><strong>Before</strong> &mdash; the old linking process built a record list. Per-transaction updates and their user-event processing were the expense.</figcaption></figure>
+        <figure><img src="media/Japan/japan-linkage-after.png" alt="The invoice summary record after the change: a compact Transactions field lists the linked invoice numbers, and the System Information tab shows the reduced map/reduce workflow processing." loading="lazy"><figcaption><strong>After</strong> &mdash; the new process adds a field. The lightweight link keeps the traceability and drops the cost.</figcaption></figure>
+      </div>
+
+      <h3>2. Lifting the rest of the experience</h3>
+      <p>The same release carried the work the journey map and the interviews
+      had surfaced:</p>
+      <ul class="outcomes">
+        <li>Clearer standard versus consolidated generation paths &mdash; a new
+        feature, and an answer to the terminology confusion the research found.</li>
+        <li>Setup and generation choices that matched how users actually work.</li>
+        <li>Improved invoice and PDF templates, including revealing the address
+        through the window of the envelope.</li>
+        <li>Recovery and regeneration scenarios, so a wrong summary no longer
+        meant starting over.</li>
       </ul>
 
-      <h2>Verify like it&rsquo;s a compliance project — because it is</h2>
-      <ul>
-        <li>Click tests on the new tax rule and invoice summary features.</li>
-        <li>Guerrilla tests on prototypes before launch.</li>
-        <li>A post-launch survey on the new financial reports and templates,
-        feeding the next iteration round.</li>
-      </ul>
+      <div class="screens pairs">
+        <p class="step-label">Step 1 &mdash; setting up the generation</p>
+        <figure><img src="media/Japan/japan-step1-before.jpg" alt="The original Generate Invoice Summary criteria screen: a long explanatory help panel above a sparse form of subsidiary, customer and closing-date fields, with the consolidated option buried in a checkbox." loading="lazy"><figcaption><strong>Before</strong> &mdash; consolidated generation already existed, but the research found customers and partners were unaware of it.</figcaption></figure>
+        <figure><img src="media/Japan/japan-step1-after.jpg" alt="The redesigned Generate Japan Invoice Summary screen: a Document Format section with an explicit Invoice Summary Type field, an invoice summary template picker and a PDF preference control, above a single row of filters including transaction type." loading="lazy"><figcaption><strong>After</strong> &mdash; an explicit Invoice Summary Type field, a user-controlled PDF option, and the transaction-type filter people had been faking with saved searches.</figcaption></figure>
 
-      <h3>Sweat the physical detail</h3>
-      <p>Japanese invoices are mailed in windowed envelopes. Our new PDF
-      templates position the receiver&rsquo;s name to stay visible through the
-      envelope window — a detail no requirements document asked for, and
-      exactly the kind users notice.</p>
+        <p class="step-label">Step 2 &mdash; reviewing before committing</p>
+        <figure><img src="media/Japan/japan-step2-before.jpg" alt="The original second step: document details and a customer list showing only balance totals per customer, with Generate and Return to Criteria buttons and no way to open the underlying transactions." loading="lazy"><figcaption><strong>Before</strong> &mdash; every step on one page, and only customer totals. There was no way to see the transactions underneath.</figcaption></figure>
+        <figure><img src="media/Japan/japan-step2-after.jpg" alt="The redesigned screen with Generation Criteria and Generation History tabs, and an expandable pre-generation table showing a parent customer, its indented child companies, and the individual invoices with numbers, dates and amounts." loading="lazy"><figcaption><strong>After</strong> &mdash; tabs carry the steps, and the table expands to transaction level so the run can be checked first.</figcaption></figure>
 
-      <div class="figure" role="img" aria-label="Diagram: the invoice summary PDF template on the left, with the receiver's name block positioned in the upper left area, and a Japanese windowed envelope on the right — dashed guides show the name block aligning exactly with the envelope's window when the printed document is folded and inserted.">
+        <p class="step-label">Step 3 &mdash; generating and getting the file</p>
+        <figure><img src="media/Japan/japan-step3-before.jpg" alt="The original Invoice Summary Generation Status screen: a banner warning that the process may take some time, a batch records table with a queued job, and Resolve Hanging Generation and Delete All Failed Generations buttons." loading="lazy"><figcaption><strong>Before</strong> &mdash; a long-wait warning, and two recovery actions that existed only because the system froze.</figcaption></figure>
+        <figure><img src="media/Japan/japan-step3-after.jpg" alt="The redesigned Generation History tab: a filterable list of generated files with download, delete and regenerate actions, status chips, closing date, customer, total amount, subsidiary, generation date and owner." loading="lazy"><figcaption><strong>After</strong> &mdash; no wait warning at all, and a generation history you can download or regenerate from.</figcaption></figure>
+      </div>
+
+      <p class="step-label">Step 4 &mdash; the template that gets posted</p>
+      <div class="figure wide" role="img" aria-label="Diagram: the invoice summary PDF template on the left, with the receiver's name block positioned in the upper left area, and a Japanese windowed envelope on the right — dashed guides show the name block aligning exactly with the envelope's window when the printed document is folded and inserted.">
         <svg viewBox="0 0 940 300" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
           <!-- PDF template -->
           <text x="70" y="16" font-size="10" letter-spacing="1.4" fill="var(--fg-muted)">THE PDF TEMPLATE</text>
@@ -217,12 +251,12 @@
             <text x="98" y="83" font-size="9" fill="var(--fg-muted)">御中 · positioned here</text>
             <!-- other content lines -->
             <g fill="var(--fg-muted)" fill-opacity="0.28">
-              <rect x="215" y="52" width="65" height="8" rx="2"/>
-              <rect x="215" y="66" width="65" height="8" rx="2"/>
-              <rect x="90" y="112" width="190" height="8" rx="2"/>
-              <rect x="90" y="128" width="190" height="8" rx="2"/>
-              <rect x="90" y="152" width="190" height="60" rx="3"/>
-              <rect x="90" y="222" width="120" height="8" rx="2"/>
+            <rect x="215" y="52" width="65" height="8" rx="2"/>
+            <rect x="215" y="66" width="65" height="8" rx="2"/>
+            <rect x="90" y="112" width="190" height="8" rx="2"/>
+            <rect x="90" y="128" width="190" height="8" rx="2"/>
+            <rect x="90" y="152" width="190" height="60" rx="3"/>
+            <rect x="90" y="222" width="120" height="8" rx="2"/>
             </g>
           </g>
           <!-- fold arrow -->
@@ -246,35 +280,125 @@
           <!-- alignment note -->
           <text x="660" y="280" font-size="11" fill="var(--accent)" font-style="italic" text-anchor="middle">the name block lands exactly in the window — no address labels, no re-printing</text>
         </svg>
-        <p class="figcap">The detail no requirements document asked for:
-        the template&rsquo;s name block is positioned so that, folded and
-        inserted, it lands exactly in the envelope window.</p>
+        <p class="figcap"><strong>After</strong> &mdash; the invoice and PDF
+        templates were improved too. The name block is positioned so that,
+        folded and inserted, it lands exactly in the envelope window: no
+        address labels, no re-printing. No requirements document asked for
+        this one.</p>
+      </div>
+      <p class="nda-note">Screens shown with demo data; details abstracted to
+      respect confidentiality. The regulatory context is public.</p>
+
+      <h2>Verification after the redesign</h2>
+      <p>We ran <strong>five moderated prototype sessions in August 2024</strong>
+      using dscout and Zoom. Participants completed realistic standard and
+      consolidated tasks: select a subsidiary, closing date and customers;
+      review the pre-generation table; generate and review the resulting
+      documents; and explain what they expected to receive after download.</p>
+
+      <div class="figure wide" role="img" aria-label="Overall test results across five participants. Task 1, generate a standard invoice summary: 100% success rate; ease ratings on a 1-to-7 scale were one 5, three 6s and one 7. Task 2, generate a consolidated invoice summary: 100% success rate; ease ratings were four 6s and one 7.">
+        <svg viewBox="0 0 1000 276" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+          <!-- header band -->
+          <rect x="214" y="0" width="383" height="56" rx="4" fill="var(--accent)"/>
+          <rect x="611" y="0" width="383" height="56" rx="4" fill="var(--accent)"/>
+          <text x="405" y="25" text-anchor="middle" font-size="18" font-weight="700" fill="var(--on-accent)">Task 1</text>
+          <text x="405" y="44" text-anchor="middle" font-size="12" fill="var(--on-accent)">Generate a Standard Invoice Summary</text>
+          <text x="802" y="25" text-anchor="middle" font-size="18" font-weight="700" fill="var(--on-accent)">Task 2</text>
+          <text x="802" y="44" text-anchor="middle" font-size="12" fill="var(--on-accent)">Generate a Consolidated Invoice Summary</text>
+
+          <!-- row backgrounds -->
+          <rect x="0" y="66" width="200" height="196" rx="4" fill="var(--card)"/>
+          <rect x="214" y="66" width="780" height="50" rx="4" fill="var(--card)"/>
+
+          <!-- Success Rate row -->
+          <text x="14" y="96" font-size="15" font-weight="600" fill="var(--fg)">Success Rate</text>
+          <text x="405" y="101" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="26" font-weight="600" fill="var(--accent)">100%</text>
+          <text x="802" y="101" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="26" font-weight="600" fill="var(--accent)">100%</text>
+
+          <!-- Ease Rating row -->
+          <text x="14" y="136" font-size="15" font-weight="600" fill="var(--fg)">Ease Rating</text>
+          <text x="14" y="154" font-size="11.5" fill="var(--fg-muted)">On a 1&ndash;7 scale</text>
+          <text x="14" y="167" font-size="11.5" fill="var(--fg-muted)">(7 = easiest),</text>
+          <text x="14" y="180" font-size="11.5" fill="var(--fg-muted)">how easy was it?</text>
+
+          <!-- Task 1 bars: counts 0,0,0,0,1,3,1 -->
+          <g>
+            <rect x="448" y="224" width="24" height="20" fill="var(--accent)"/>
+            <rect x="502" y="184" width="24" height="60" fill="var(--accent)"/>
+            <rect x="557" y="224" width="24" height="20" fill="var(--accent)"/>
+            <text x="460" y="218" text-anchor="middle" font-size="13" fill="var(--fg)">1</text>
+            <text x="514" y="178" text-anchor="middle" font-size="13" fill="var(--fg)">3</text>
+            <text x="569" y="218" text-anchor="middle" font-size="13" fill="var(--fg)">1</text>
+            <g font-size="13" fill="var(--fg-muted)" text-anchor="middle">
+              <text x="241" y="236">0</text><text x="296" y="236">0</text>
+              <text x="350" y="236">0</text><text x="405" y="236">0</text>
+            </g>
+            <line x1="214" y1="244" x2="597" y2="244" stroke="var(--rule-faint)" stroke-width="1"/>
+            <g font-size="12" fill="var(--fg-muted)" text-anchor="middle">
+              <text x="241" y="262">1</text><text x="296" y="262">2</text><text x="350" y="262">3</text>
+              <text x="405" y="262">4</text><text x="460" y="262">5</text><text x="514" y="262">6</text><text x="569" y="262">7</text>
+            </g>
+          </g>
+
+          <!-- Task 2 bars: counts 0,0,0,0,0,4,1 -->
+          <g>
+            <rect x="899" y="164" width="24" height="80" fill="var(--accent)"/>
+            <rect x="954" y="224" width="24" height="20" fill="var(--accent)"/>
+            <text x="911" y="158" text-anchor="middle" font-size="13" fill="var(--fg)">4</text>
+            <text x="966" y="218" text-anchor="middle" font-size="13" fill="var(--fg)">1</text>
+            <g font-size="13" fill="var(--fg-muted)" text-anchor="middle">
+              <text x="638" y="236">0</text><text x="693" y="236">0</text><text x="747" y="236">0</text>
+              <text x="802" y="236">0</text><text x="857" y="236">0</text>
+            </g>
+            <line x1="611" y1="244" x2="994" y2="244" stroke="var(--rule-faint)" stroke-width="1"/>
+            <g font-size="12" fill="var(--fg-muted)" text-anchor="middle">
+              <text x="638" y="262">1</text><text x="693" y="262">2</text><text x="747" y="262">3</text>
+              <text x="802" y="262">4</text><text x="857" y="262">5</text><text x="911" y="262">6</text><text x="966" y="262">7</text>
+            </g>
+          </g>
+        </svg>
+        <p class="figcap">Both tasks reached a 100% success rate across five
+        participants, and every ease rating landed at the easy end of the scale
+        (5&ndash;7). Of the five, four rated themselves very confident with
+        NetSuite beforehand and one somewhat confident.</p>
       </div>
 
-      <h2>Outcome</h2>
+      <p>Alongside the scores, the sessions surfaced four actionable
+      improvements:</p>
       <ul class="outcomes">
-        <li>Customers compliant with the Qualified Invoice System on
-        deadline.</li>
-        <li>Invoice Summary experience redesigned end-to-end, not patched —
-        the research from this arc powered the SuiteTax SuiteApp revamp and
-        further report and template work.</li>
-        <li>Research-integrated delivery became the norm: surveys, guerrilla
-        tests, and expert interviews are now standard steps, not
-        nice-to-haves.</li>
+        <li><strong>Make parent&ndash;child relationships explicit.</strong>
+        Participants were confused when child-company data appeared
+        unexpectedly. The table needed to explain why related companies were
+        included.</li>
+        <li><strong>Preserve a path back to the original invoice.</strong> Users
+        wanted to inspect the underlying invoice details before deciding whether
+        to generate a summary.</li>
+        <li><strong>Clarify destructive-action labels.</strong> &ldquo;Delete
+        Transaction&rdquo; could be read as deleting a single line item rather
+        than the whole invoice summary &mdash; unnecessary risk.</li>
+        <li><strong>Improve pre-generation decision support.</strong> Showing
+        the number of transactions per customer would help users understand the
+        scope of what they were about to generate.</li>
       </ul>
-      <div class="pullquote">
-        <p>&ldquo;Her insistence on research and usability tests for Japan
-        localization projects is commendable.&rdquo;</p>
-        <cite>— Stakeholder feedback, performance review</cite>
-      </div>
+      <p>The sessions confirmed the redesigned flow was understandable enough to
+      complete the core tasks, and identified exactly which content and labelling
+      changes were needed before wider rollout.</p>
 
       <h2>What I learned</h2>
-      <p>Compliance projects are the best-disguised UX opportunities in
-      enterprise software: budget is guaranteed, attention is guaranteed,
-      deadlines are immovable — the only variable is whether design shows up
-      with ambition. And the highest-leverage question a designer can ask
-      isn&rsquo;t &ldquo;how should this look?&rdquo; but &ldquo;should the system be doing this
-      at all?&rdquo;</p>
+      <p>For localization work, usability is inseparable from operational and
+      regulatory context. A technically elegant solution can still fail if it
+      removes the evidence users need to perform financial checks &mdash; which
+      is exactly what my first hypothesis would have done, had the interviews
+      not corrected it.</p>
+      <p>Three principles I carry into complex enterprise work:</p>
+      <ul class="outcomes">
+        <li>Validate workflow assumptions with the people closest to the
+        domain.</li>
+        <li>Treat speed as a user-experience outcome, not only an engineering
+        metric.</li>
+        <li>Preserve user trust by making system relationships, consequences
+        and exceptions visible.</li>
+      </ul>
     </article>
 
     <nav class="case-nav" aria-label="Case studies">
@@ -292,6 +416,6 @@
   </main>
 
   <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"></button>
-  <script src="script.js"></script>
+  <script src="script.js?v=20260930k"></script>
 </body>
 </html>

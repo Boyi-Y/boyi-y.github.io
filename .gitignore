@@ -13,3 +13,16 @@ site-copy.md
 # Hidden article (2026 study not ready) + its assets
 _hidden-case-l10n.html
 media/CJK/
+
+# Japan case — raw source screenshots (unredacted internal account string,
+# Pages/PDF exports). The published, redacted web assets live in media/Japan/.
+media/Japan invoice summary/
+
+# BPI case — raw source slides and the thumbnail source. Published web copies
+# are media/BPI/bpi-eg-*.jpg and media/bpi-thumb.jpg. (git here is
+# case-insensitive, so the leading space is what spares the bpi-eg-* files.)
+media/BPI/BPI *.jpg
+media/BPI/thumbnail.*
+
+# Interview prep — private, never publish
+interview/
