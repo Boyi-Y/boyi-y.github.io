@@ -9,6 +9,10 @@ node_modules/
 # Internal working docs — never publish
 content-plan.md
 site-copy.md
+fsm-case-draft.md
+
+# Personal headshot used in the resume, not on the site
+media/Profile photo.jpg
 
 # Hidden article (2026 study not ready) + its assets
 _hidden-case-l10n.html
@@ -26,3 +30,25 @@ media/BPI/thumbnail.*
 
 # Interview prep — private, never publish
 interview/
+
+# FSM blueprint master (15 MB SVG with embedded photos) — the served file is the @2x PNG
+media/FSM/*.svg
+
+# FSM raw screen captures (unblurred, with customer names) and 1x duplicates — the served copies are media/FSM/fsm-*.jpg
+media/FSM/FSM mobile_*.png
+media/FSM/Mobile-Task List.png
+media/FSM/Task Details & Map.png
+media/FSM/FSM Mobile *.png
+
+# FSM agent decision scenarios — working draft for the Figma Make decision tree, never publish
+fsm-agent-decision-scenarios.md
+fsm-decision-tree-figma-make-prompt.md
+
+# FSM raw screen recordings (QuickTime originals) — the served copies are the 720p .mp4 files beside them
+media/FSM/*.mov
+
+fsm-blueprint-figma-make-prompt.md
+# FSM cover source (served copy is media/FSM/fsm-thumb.jpg)
+media/FSM/Cover thumbnail FSM.png
+# FSM agent blueprint export — not on the page yet; remove this line when it is embedded
+media/FSM/service-blueprint-agent@2x.png

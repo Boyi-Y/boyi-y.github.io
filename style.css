@@ -812,3 +812,137 @@ a:hover { text-decoration-color: currentColor; }
 
   .site-footer { flex-direction: column; gap: 12px; }
 }
+
+/* Inline SVG thumbnail — an abstracted, theme-aware cover for confidential work */
+.case-card .thumb-svg { display: block; overflow: hidden; }
+.case-card .thumb-svg svg { display: block; width: 100%; height: 100%; }
+
+/* A status note set apart from the prose, e.g. "concept, not shipped" */
+.prose p.note {
+  margin: 20px 0;
+  padding: 12px 18px;
+  border: 1px dashed var(--rule);
+  border-radius: 3px;
+  color: var(--fg-muted);
+  font-size: 15px;
+}
+
+/* Wide diagrams whose labels would be illegible if shrunk to a phone width:
+   keep a readable minimum and let the figure scroll sideways instead. */
+@media (max-width: 900px) {
+  .figure.wide.scroll { overflow-x: auto; }
+  .figure.wide.scroll svg,
+  .figure.wide.scroll img { min-width: 860px; }
+}
+
+/* A diagram exported on the site's paper colour (#faf9f7): in dark mode it
+   sits on a panel of that exact colour so its baked-in background disappears. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .figure.diagram.paper img { background: #faf9f7; }
+}
+:root[data-theme="dark"] .figure.diagram.paper img { background: #faf9f7; }
+
+/* The exported blueprint opens in the lightbox (it is a .figure.wide img), so say so. */
+.figure.diagram.paper img { cursor: zoom-in; }
+
+/* Phone screens in a device frame, before and after side by side.
+   Every screen is cropped to the same frame (top-aligned), so the pair reads
+   at a glance; click still opens the full capture in the lightbox. */
+.screens.phones {
+  grid-template-columns: repeat(2, 272px);
+  justify-content: center;
+  column-gap: 64px;
+  row-gap: 40px;
+}
+.screens.phones .step-label { grid-column: 1 / -1; text-align: center; margin: 8px 0 -4px; }
+.screens.phones figure { text-align: center; }
+.phone {
+  width: 272px;
+  height: auto; /* 8px bezel; the screen keeps the capture's own ratio (375×856 or 375×812) */
+  margin: 0 auto;
+  padding: 8px;
+  border-radius: 40px;
+  background: #1c1c1e;
+  box-shadow: 0 0 0 1px var(--rule-faint), 0 18px 40px -24px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: top;
+  border: 0;
+  border-radius: 32px;
+  cursor: zoom-in;
+}
+.screens.phones figcaption { text-align: left; max-width: 272px; margin: 0 auto; }
+@media (max-width: 720px) {
+  .screens.phones { grid-template-columns: 1fr; row-gap: 28px; }
+}
+
+/* Before/after comparison table (FSM) */
+.compare { margin: 36px 0 44px; }
+.compare .step-label { margin-bottom: 12px; }
+.compare table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.5; }
+.compare th, .compare td { text-align: left; vertical-align: top; padding: 12px 16px 12px 0; border-top: 1px solid var(--rule-faint); }
+.compare thead th { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; border-top: 0; padding-top: 0; }
+.compare tbody th { font-weight: 600; width: 22%; }
+.compare tbody td { color: var(--fg); width: 39%; }
+.compare tbody td:first-of-type { color: var(--muted); }
+.compare tbody tr:last-child th, .compare tbody tr:last-child td { border-bottom: 1px solid var(--rule-faint); }
+@media (max-width: 600px) {
+  .compare thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .compare table, .compare tbody, .compare tr, .compare th, .compare td { display: block; width: auto; }
+  .compare tbody tr { padding: 14px 0; border-top: 1px solid var(--rule-faint); }
+  .compare tbody tr:last-child { border-bottom: 1px solid var(--rule-faint); }
+  .compare tbody th, .compare tbody td { display: block; width: auto; border: 0; padding: 0 0 6px; }
+  .compare tbody td::before { display: block; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin: 6px 0 2px; }
+  .compare tbody td:first-of-type::before { content: "Before"; }
+  .compare tbody td:last-of-type::before { content: "After"; }
+}
+
+/* Worked-through moment: one mockup per stage, note beneath */
+.stages-gallery { margin: 28px 0 36px; }
+.stage { margin: 0; padding: 0 0 22px; border-bottom: 1px solid var(--rule-faint); }
+.stage + .stage { padding-top: 22px; }
+.stage:last-child { border-bottom: 0; padding-bottom: 0; }
+.stage > img { display: block; max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 0 0 1px var(--rule-faint); margin: 0 0 16px; cursor: zoom-in; }
+.stage > .phone { margin: 0 0 16px; }
+.stage figcaption { font-size: 15px; line-height: 1.55; color: var(--fg); }
+.stage-num { display: inline-block; min-width: 22px; height: 22px; line-height: 22px; text-align: center; border-radius: 50%; background: var(--accent); color: #fff; font-size: 12px; font-weight: 600; margin-right: 8px; vertical-align: 1px; }
+.stage-side { display: block; margin: 4px 0 6px 30px; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+
+/* Slice of the redesign: prototype recordings. The wide Scheduler clip carries
+   steps 1–3 with three notes beneath; the two phone clips sit side by side for
+   steps 4 and 5. Videos load only when scrolled near (see script.js). */
+.stage-wide > video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px var(--rule-faint);
+  background: var(--card);
+  margin: 0 0 18px;
+}
+.stage-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 28px; }
+.stage-steps.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.stage-step { font-size: 15px; line-height: 1.55; color: var(--fg); }
+.phone-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; margin: 0 0 18px; }
+.phone-video {
+  width: 272px;
+  aspect-ratio: 1 / 2; /* the clips are recorded with the device frame in shot */
+  margin: 0 auto;
+  border-radius: 40px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 0 0 1px var(--rule-faint), 0 18px 40px -24px rgba(0, 0, 0, 0.45);
+}
+.phone-video video { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* The decision-tree recording is a light canvas: no black letterbox, a hairline instead. */
+.figure.tree video { background: #faf9f7; box-shadow: 0 0 0 1px var(--rule-faint); border-radius: 8px; }
+@media (max-width: 720px) {
+  .stage-steps, .stage-steps.two, .phone-pair { grid-template-columns: 1fr; }
+  .stage-steps .stage-step + .stage-step { margin-top: 18px; }
+  .phone-pair { row-gap: 24px; }
+}

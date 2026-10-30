@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Field Service Management: designing both sides of a service loop — Boyi Yang</title>
+  <meta name="description" content="Case study: NetSuite Field Service Management — a technician on a mobile app and a scheduler on a web board sharing one job. Service blueprinting and end-to-end journey mapping across technician, scheduler and customer touchpoints; a hands-on redesign of the mobile app around the technician's day on the NetSuite design system; and a concept for an AI agent on both sides of the loop.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20261031a">
+  <script>
+    (function () {
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.dataset.theme = saved;
+    })();
+  </script>
+</head>
+<body>
+  <main>
+    <header class="site-header compact">
+      <p class="logotype-small"><a href="index.html">Boyi Yang</a></p>
+      <nav class="site-nav" aria-label="Site">
+        <div class="nav-group">
+          <a href="index.html#work">Work</a>
+          <a href="about.html">About</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="case-head">
+      <p class="eyebrow">Product work · Service design</p>
+      <h1>Field Service Management: designing both sides of a service&nbsp;loop</h1>
+      <p class="sub">A technician in the field and a scheduler in the office
+      share one job and one record. I redesigned the mobile app around the
+      technician&rsquo;s day, and asked where an AI agent belongs in the loop
+      between them.</p>
+    </div>
+
+    <div class="tldr">
+      <dl>
+        <dt>Role</dt>
+        <dd>UX Manager, hands-on &mdash; led the mobile redesign with one
+        designer</dd>
+        <dt>When</dt>
+        <dd>2026 · Oracle NetSuite</dd>
+        <dt>Context</dt>
+        <dd>NetSuite Field Service Management, launched April 2025 on an
+        acquired field-service product &mdash; a Scheduler for the office
+        and a mobile app for the field</dd>
+        <dt>Scope</dt>
+        <dd>Service blueprint and end-to-end journey of the technician,
+        scheduler and customer; mobile app redesign &mdash; navigation,
+        interface, usability, and migration onto the NetSuite design system
+        and brand; plus a concept for an AI agent on both sides of the
+        service</dd>
+        <dt>Methods</dt>
+        <dd>Service blueprinting &middot; End-to-end journey mapping &middot;
+        Multi-touchpoint service design &middot; Design systems</dd>
+      </dl>
+    </div>
+
+    <article class="prose">
+      <h2>One job, two people, one record</h2>
+      <p class="lead">Field service is a service design problem before it is
+      a screen design problem. The work happens in two places that depend on
+      each other. In the office, an operator assigns jobs on NetSuite&rsquo;s
+      Scheduler board &mdash; by skill, proximity, priority and the asset
+      being serviced. In the field, a technician works the job on a phone:
+      where to go, who the customer is, what the asset&rsquo;s history says,
+      which parts went in, what the customer signed. NetSuite is the record
+      they share.</p>
+      <p>So the mobile app is never alone. When a technician starts a job,
+      logs parts or closes it, the operator&rsquo;s view of the day moves.
+      When the operator changes an assignment, the technician has to see it
+      before driving to the wrong site. Most of what makes the service feel
+      good or bad lives in those handoffs, so before touching a screen I
+      mapped the service end to end as a blueprint and worked from that.
+      Service blueprinting here was not a deliverable; it was the way to see
+      the mobile app as one touchpoint in a multi-touchpoint service.</p>
+
+      <div class="figure wide diagram paper scroll">
+        <img src="media/FSM/service-blueprint-faf9f7@2x.png" width="2288" height="1000" alt="Service blueprint: technician frontstage on the mobile app, operator frontstage on the Scheduler, NetSuite backstage, with the handoffs marked at each stage of a job — assignment and work order in Prepare, job started in Arrive, parts and status and inventory in Perform, completed and billing in Complete.">
+        <p class="figcap">The service blueprint I worked from. Two frontstages &mdash;
+        the technician on the phone, the operator on the Scheduler &mdash;
+        and NetSuite backstage. The accent arrows are the handoffs; the
+        research findings cluster around them.</p>
+      </div>
+
+      <h2>Starting from the research</h2>
+      <p>The team&rsquo;s field research &mdash; interviews with technicians
+      across service companies and an end-to-end journey map of a
+      technician&rsquo;s day &mdash;
+      had already named where the first release of the app got in the way.
+      Technicians could not see work far enough ahead, so the week began
+      with surprises. They waited for the task list to load before anything
+      useful showed. Internal notes were missing from a job&rsquo;s history,
+      so they called the office or the previous technician. Materials went
+      onto a job one item at a time. And some did not trust that a
+      completed job had saved, so they emailed their own notes to
+      themselves as a backup.</p>
+      <p>Read as a service rather than as a list of interface bugs, those
+      are three failures of the loop: the office&rsquo;s plan does not reach
+      the field early enough, the moment of work is slowed by the record,
+      and the field&rsquo;s work does not reliably reach the office.
+      Visibility, speed and sync confidence became the brief for the
+      redesign.</p>
+
+      <div class="figure wide diagram paper scroll">
+        <img src="media/FSM/technician-journey@2x.png" width="2288" height="544" alt="A technician's day in four stages — Prepare, Arrive and diagnose, Perform, Complete — with the five research findings placed where they bite: can't see work far enough ahead (visibility); waits for the task list to load (speed); internal notes missing from job history (visibility); materials added one item at a time (speed); doesn't trust that the completed job saved (sync confidence).">
+        <p class="figcap">The end-to-end journey of a day in the field, with
+        the research findings placed where they bite. Each one is a handoff that failed, not a
+        screen that failed.</p>
+      </div>
+
+      <h2>The redesign: navigation, interface, usability</h2>
+      <p>The product had come to NetSuite through an acquisition, and the
+      mobile app still looked and behaved like the company it came from:
+      the shape of a desktop system on a phone, records first, work second,
+      in a visual language that was not NetSuite&rsquo;s. The brief was
+      twofold &mdash; lift the experience, and bring the app onto
+      NetSuite&rsquo;s design system and brand so that the technician&rsquo;s
+      phone and the operator&rsquo;s Scheduler read as one product. That made
+      the design system part of the service design: two touchpoints built
+      by different companies had to feel like one organisation. I led
+      the redesign with one designer and worked hands-on on the information
+      architecture, the job view and the capture flows.</p>
+      <p><strong>Navigate the day, not the data model.</strong> Today&rsquo;s
+      jobs, the job in front of me, what is left before I can close it.
+      Customer, asset and inventory records sit one tap inside the job
+      instead of being destinations of their own.</p>
+      <p><strong>A job view that answers questions in order.</strong> What is
+      this visit and how urgent is it; where am I going and who is the
+      customer; what asset is this and what happened last time; what do I
+      need to record; what is left before I can close. Service history and
+      internal notes moved into that sequence, so the phone call to the
+      office stopped being the fastest path.</p>
+      <p><strong>Fewer steps where the pressure is.</strong> Capture &mdash;
+      parts, labour, photos, signature &mdash; was rebuilt to take fewer
+      taps, with the biggest cut in the task technicians repeated most:
+      adding materials.</p>
+      <p><strong>Make the system&rsquo;s state honest.</strong> Saved, syncing
+      and unsaved became unmistakable, and completing a job gets an explicit
+      confirmation. A personal email backup stops being the rational
+      choice.</p>
+      <p><strong>Built for the field, not the desk.</strong> Scannable
+      hierarchy, large targets, legibility in glare: the conditions in the
+      journey map, not the conditions in the office.</p>
+      <p><strong>One product, one brand.</strong> The app moved onto
+      NetSuite&rsquo;s design system &mdash; components, type, colour,
+      iconography &mdash; adapted where field conditions demanded it, so
+      an acquired product stopped looking acquired.</p>
+
+      <div class="screens pairs phones">
+        <p class="step-label">Task list &mdash; before and after</p>
+        <figure><div class="phone"><img src="media/FSM/fsm-list-before.jpg" width="375" height="856" alt="Before: the acquired app's task list — a dark screen of dense rows, each a long job code with the customer line beneath it, times down the left, no priority or status visible." loading="lazy"></div><figcaption>Before: every job a code, every row the same weight, nothing says what matters first.</figcaption></figure>
+        <figure><div class="phone"><img src="media/FSM/fsm-list-after.jpg" width="375" height="856" alt="After: the redesigned task list in NetSuite's design system — jobs grouped by day as cards, each with a priority chip, time window, title, task number, a note from the office and a tappable address, with search, filters and a sync control above." loading="lazy"></div><figcaption>After: the day as cards &mdash; priority, window, the office&rsquo;s note and the address at a glance, in NetSuite&rsquo;s design language.</figcaption></figure>
+        <p class="step-label">Task details &mdash; before and after</p>
+        <figure><div class="phone"><img src="media/FSM/fsm-details-before.jpg" width="375" height="856" alt="Before: the acquired app's task screen — a dark page of labelled fields and reference numbers, Start and Complete buttons in the middle, then a long undifferentiated list of sub-records." loading="lazy"></div><figcaption>Before: reference numbers first, and a flat list of sub-records to hunt through.</figcaption></figure>
+        <figure><div class="phone"><img src="media/FSM/fsm-details-after.jpg" width="375" height="856" alt="After: the redesigned task details — priority and status at the top, time, case type, the case details in plain text, task number and type, a tappable address, Start and Complete actions, then the sub-records as a scannable list with icons: gate form, contacts, job safety, repair record, sales order, history, time, job status, vendor bills, remaining balance, job-site checklist." loading="lazy"></div><figcaption>After: the job answers its questions in order, then the records a technician needs, each with an icon and a name.</figcaption></figure>
+      </div>
+      <p class="figcap">Design mockups for the redesign, with sample data. Customer details in the acquired app&rsquo;s screens are blurred.</p>
+
+      <div class="compare">
+        <p class="step-label">Before and after, at a glance</p>
+        <table>
+          <thead>
+            <tr><th scope="col"></th><th scope="col">Before</th><th scope="col">After</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Task list</th><td>Every job a code, every row the same weight; nothing signals priority.</td><td>Cards show priority, time window, the office&rsquo;s note and the address at a glance.</td></tr>
+            <tr><th scope="row">Task details</th><td>Reference numbers first; a flat list of sub-records to hunt through.</td><td>Job context first, in working order; each record one tap away and clearly named.</td></tr>
+            <tr><th scope="row">Capture flow</th><td>Separate forms for parts, labour, photos and signature; materials added one at a time.</td><td>One capture flow; materials picked as a group; fewer taps to close a job.</td></tr>
+            <tr><th scope="row">Status</th><td>Ambiguous icons; no clear confirmation that work was saved or sent.</td><td>Plain words &mdash; saved on device, syncing, confirmed &mdash; and an explicit confirmation on completion.</td></tr>
+            <tr><th scope="row">Visual language</th><td>The acquired product&rsquo;s design system, disconnected from the Scheduler.</td><td>NetSuite&rsquo;s design system and brand; field and office read as one product.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Reimagining the service with an agent</h2>
+      <p class="note">Concept, 2026. Not shipped. The AI service design
+      covers the whole loop; what follows is one slice of it.</p>
+      <p>NetSuite was moving AI across the platform at the time, and the
+      obvious question &mdash; where can we add AI to this app &mdash; was
+      the wrong one. The service question was better: which moments in this
+      two-sided loop are heavy, repetitive or anxious, and which side of the
+      loop should an agent serve? The answer was both sides, one agent per
+      persona.</p>
+      <p><strong>For the technician, a field assistant at the moment of
+      work.</strong> A brief for tomorrow&rsquo;s jobs drawn from history and
+      notes. Capture by voice or photo, turned into a structured record of
+      parts, labour and readings. A nudge for what is left to close, and
+      sync status in plain language. The agent carries the admin so the
+      technician stays on the customer and the equipment.</p>
+      <p><strong>For the operator, a dispatch assistant for the day&rsquo;s
+      changes.</strong> When a job overruns or a part arrives early, it
+      proposes reassignments that respect skills, location, parts on hand
+      and the customer&rsquo;s window, explains why, and leaves the decision
+      to the scheduler. It closes the loop the other way, too: a completed
+      record updates the board without a phone call.</p>
+      <p><strong>The framework: who proposes, who decides.</strong> The
+      principle came from <a href="case-ai.html">NetSuite&rsquo;s AI UX
+      patterns work</a>: the agent proposes, the person decides, and the
+      more a mistake would cost, the more the person sees &mdash; quiet help
+      for small reversible steps, explicit confirmation where a wrong move
+      costs money or a customer. Applied to the blueprint, every moment gets
+      the same questions, and the answers set how much the agent may do on
+      its own. The storyboard maps a technician&rsquo;s day that way. Filled
+      dots are where the agent proposes; outlined dots are where a person
+      decides. The balance shifts from moment to moment, and that shift is
+      the design.</p>
+
+      <div class="figure wide scroll">
+        <svg viewBox="0 0 1100 450" role="img" aria-labelledby="sb-title" style="font-family: var(--font-body)">
+          <title id="sb-title">Concept storyboard, not shipped: one technician's day in five moments, with a field assistant in the technician's row and a dispatch assistant in the operator's row. Filled dots mark where the agent proposes; outlined dots mark where a person decides. The mid-day change column, outlined in accent, is the slice of the redesign shown in detail below.</title>
+          <text x="0" y="22" font-size="12" letter-spacing="1.5" font-weight="600" fill="var(--accent)">CONCEPT · NOT SHIPPED</text>
+          <g font-size="12" letter-spacing="1.5" font-weight="600" fill="var(--fg-muted)" text-anchor="middle">
+            <text x="268" y="52">EVENING BEFORE</text>
+            <text x="452" y="52">MORNING</text>
+            <text x="636" y="52">ON SITE</text>
+            <text x="820" y="52">MID-DAY CHANGE</text>
+            <text x="1004" y="52">CLOSE</text>
+          </g>
+          <line x1="180" y1="64" x2="1092" y2="64" stroke="var(--rule-faint)"/>
+          <g font-size="13">
+            <text x="0" y="150" fill="var(--fg)" font-weight="600">Technician</text>
+            <text x="0" y="168" fill="var(--fg-muted)" font-size="12">field assistant</text>
+            <text x="0" y="330" fill="var(--fg)" font-weight="600">Operator</text>
+            <text x="0" y="348" fill="var(--fg-muted)" font-size="12">dispatch assistant</text>
+          </g>
+          <g fill="var(--card)" stroke="var(--rule-faint)">
+            <rect x="180" y="82" width="176" height="150" rx="6"/><rect x="364" y="82" width="176" height="150" rx="6"/><rect x="548" y="82" width="176" height="150" rx="6"/><rect x="732" y="82" width="176" height="150" rx="6"/><rect x="916" y="82" width="176" height="150" rx="6"/>
+            <rect x="180" y="262" width="176" height="150" rx="6"/><rect x="364" y="262" width="176" height="150" rx="6"/><rect x="548" y="262" width="176" height="150" rx="6"/><rect x="732" y="262" width="176" height="150" rx="6"/><rect x="916" y="262" width="176" height="150" rx="6"/>
+          </g>
+          <g fill="var(--accent)">
+            <circle cx="196" cy="104" r="5"/><circle cx="380" cy="104" r="5"/><circle cx="564" cy="104" r="5"/><circle cx="748" cy="104" r="5"/><circle cx="932" cy="104" r="5"/>
+            <circle cx="196" cy="284" r="5"/><circle cx="380" cy="284" r="5"/><circle cx="564" cy="284" r="5"/><circle cx="748" cy="284" r="5"/><circle cx="932" cy="284" r="5"/>
+          </g>
+          <g fill="none" stroke="var(--fg)" stroke-width="1.5">
+            <circle cx="580" cy="104" r="5"/><circle cx="764" cy="104" r="5"/>
+            <circle cx="212" cy="284" r="5"/><circle cx="396" cy="284" r="5"/><circle cx="764" cy="284" r="5"/>
+          </g>
+          <g font-size="12.5" fill="var(--fg)">
+            <text x="192" y="130">Brief for tomorrow:<tspan x="192" dy="17">jobs, route, and what</tspan><tspan x="192" dy="17">the last visit&rsquo;s notes</tspan><tspan x="192" dy="17">said</tspan></text>
+            <text x="376" y="130">The night&rsquo;s change,<tspan x="376" dy="17">explained: a new first</tspan><tspan x="376" dy="17">job, and why</tspan></text>
+            <text x="560" y="130">Voice and photo become<tspan x="560" dy="17">parts, labour and</tspan><tspan x="560" dy="17">readings &mdash; one capture,</tspan><tspan x="560" dy="17">then confirm</tspan></text>
+            <text x="744" y="130">Reassigned mid-route:<tspan x="744" dy="17">what changed, why you,</tspan><tspan x="744" dy="17">where the old job went.</tspan><tspan x="744" dy="17">&ldquo;On my way&rdquo; tells the</tspan><tspan x="744" dy="17">office and the customer</tspan></text>
+            <text x="928" y="130">&ldquo;What&rsquo;s left to close&rdquo;,<tspan x="928" dy="17">then &ldquo;saved and sent&rdquo;</tspan></text>
+
+            <text x="192" y="310">Draft schedule by<tspan x="192" dy="17">skill, distance and</tspan><tspan x="192" dy="17">parts on hand; the</tspan><tspan x="192" dy="17">scheduler adjusts it</tspan></text>
+            <text x="376" y="310">Part arrived early:<tspan x="376" dy="17">reassignment proposed</tspan><tspan x="376" dy="17">with reasons; accept</tspan><tspan x="376" dy="17">or decline</tspan></text>
+            <text x="560" y="310">Board updates as the<tspan x="560" dy="17">field records &mdash; no</tspan><tspan x="560" dy="17">status call</tspan></text>
+            <text x="744" y="310">Urgent VIP job, no one<tspan x="744" dy="17">free: two technicians</tspan><tspan x="744" dy="17">proposed with trade-offs;</tspan><tspan x="744" dy="17">the dispatcher assigns one</tspan></text>
+            <text x="928" y="310">Completed record lands<tspan x="928" dy="17">on the board; billing</tspan><tspan x="928" dy="17">and next service queued</tspan></text>
+          </g>
+          <g fill="none" stroke="var(--accent)" stroke-width="1.5">
+            <rect x="732" y="82" width="176" height="150" rx="6"/><rect x="732" y="262" width="176" height="150" rx="6"/>
+          </g>
+          <text x="820" y="432" font-size="11.5" letter-spacing="1" font-weight="600" fill="var(--accent)" text-anchor="middle">SHOWN IN DETAIL BELOW</text>
+          <g font-size="12" fill="var(--fg-muted)">
+            <circle cx="186" cy="436" r="5" fill="var(--accent)"/><text x="198" y="440">agent proposes</text>
+            <circle cx="330" cy="436" r="5" fill="none" stroke="var(--fg)" stroke-width="1.5"/><text x="342" y="440">person decides</text>
+          </g>
+        </svg>
+        <p class="figcap">One technician&rsquo;s day with the agent on both
+        sides of the loop. Filled dots are moments the agent proposes;
+        outlined dots are moments a person decides. The fourth moment, the
+        mid-day change, is the slice shown in detail below.</p>
+      </div>
+
+      <p>To make that balance explicit rather than a matter of taste, I
+      graded every moment on the blueprint &mdash; forty-two of them, across
+      the technician, the operator, the customer and the agent&rsquo;s own
+      backstage work &mdash; with the same six questions in the same order.
+      Does the act commit something outside the system: a promise, a record,
+      money? Is it a formal act only a person may perform? Does it reach the
+      customer directly, and does policy allow it to go unattended? Does it
+      change someone else&rsquo;s plan? Is the agent&rsquo;s input complete
+      and trusted, and is there a single best answer? Can it be undone at no
+      cost? Each moment lands on one of five levels: the person acts alone;
+      the agent informs and the person decides; the agent offers options
+      with the trade-offs; the agent proposes one answer for a one-tap
+      confirm; or the agent acts, with undo when hands are free and a log
+      entry when they are not.</p>
+
+      <div class="figure wide tree">
+        <video data-src="media/FSM/autonomy-tree.mp4" poster="media/FSM/autonomy-tree-poster.jpg" width="1280" height="576" loop muted playsinline disablepictureinpicture preload="none" aria-label="Recording of the interactive decision tree. Scenario cards wait in a dock on the left, grouped by stage of the day. One at a time, each card travels through six question columns — consequences, accountability, customer touchpoint, reach, confidence, reversibility — along green yes lines and red no lines, and lands on one of five autonomy-level cards on the right, from human only to act."></video>
+        <p class="figcap">Who decides? Every scenario leaves the dock on the
+        left, is routed through the six questions and lands on one of five
+        autonomy levels on the right. Built as an interactive prototype;
+        shown here as a recording.</p>
+      </div>
+
+      <h3>A slice of the redesign: the mid-day change</h3>
+      <p>The agent redesign spans every moment on the blueprint, far more
+      than one article can show. So here is one slice of it, end to end:
+      an urgent job arriving when nobody is free, followed across all three
+      touchpoints &mdash; the operator&rsquo;s Scheduler, the
+      technician&rsquo;s phone and the customer&rsquo;s text message. It
+      shows how the service was redefined with the agent in it:
+      multi-touchpoint service design in miniature, one event, three
+      people, three surfaces, one record. Each step lands on a different
+      level of the tree above, and the level is named on each step.</p>
+      <div class="stages-gallery">
+        <figure class="stage stage-wide" id="stage-scheduler">
+          <video data-src="media/FSM/concept-scheduler-1-3.mp4" poster="media/FSM/concept-scheduler-1-3-poster.jpg" width="1280" height="720" loop muted playsinline disablepictureinpicture preload="none" aria-label="Scheduler prototype, steps one to three. The dispatcher's board and map fill the screen; the agent's panel opens on the right with an urgent same-day request from a VIP customer. The agent reports that no technician is free but two are on maintenance jobs the customer has not confirmed, lays both out as options with pros and cons, and the dispatcher taps Assign on one. The panel confirms the reassignment and later reports that the technician has accepted and is on the way."></video>
+          <figcaption>
+            <div class="stage-steps">
+              <div class="stage-step" id="stage-sense">
+                <span class="stage-num">1</span><strong>Sense.</strong>
+                <span class="stage-side">Operator &middot; Scheduler &middot; agent looks, nothing changes</span>
+                An urgent same-day job for a VIP customer lands on the board
+                when no one is free. The agent reads the day and finds two
+                technicians on maintenance visits the customer has not yet
+                confirmed, so they can move.
+              </div>
+              <div class="stage-step" id="stage-propose">
+                <span class="stage-num">2</span><strong>Propose, in the open.</strong>
+                <span class="stage-side">Operator &middot; Scheduler &middot; level 2, options with trade-offs</span>
+                Both are offered with the trade-off stated: one is closer but
+                less experienced on this asset, the other further away but
+                has served this customer before. A wrong call costs a VIP
+                customer and there is no single right answer, so the agent
+                lays out the choice and stops.
+              </div>
+              <div class="stage-step" id="stage-decide">
+                <span class="stage-num">3</span><strong>Decide.</strong>
+                <span class="stage-side">Operator &middot; Scheduler &middot; the person&rsquo;s half of level 2</span>
+                The dispatcher assigns in one tap. The agent never assigns on
+                its own. What follows is already decided, so the agent moves
+                the displaced visit, updates the board and reports what it did
+                in a line of plain text: level 4, reversible, no dialog.
+              </div>
+            </div>
+          </figcaption>
+        </figure>
+        <figure class="stage stage-phones" id="stage-field">
+          <div class="phone-pair">
+            <div class="phone-video"><video data-src="media/FSM/concept-technician-4.mp4" poster="media/FSM/concept-technician-4-poster.jpg" width="640" height="1280" loop muted playsinline disablepictureinpicture preload="none" aria-label="Technician's phone, step four. A lock-screen notification from Field Service says an ad-hoc repair has been assigned for 2 pm and asks the technician to accept it in the app. The app opens on an Awaiting acceptance card: priority, case number, the repair for the VIP customer, time window, case details, asset and a tappable address, with Accept and Decline buttons. The technician taps Accept."></video></div>
+            <div class="phone-video"><video data-src="media/FSM/concept-customer-5.mp4" poster="media/FSM/concept-customer-5-poster.jpg" width="628" height="1280" loop muted playsinline disablepictureinpicture preload="none" aria-label="Customer's phone, step five. A new text message from the service company opens: a repair service is booked for 2 pm today, the technician Jim LeBlanc is on the way and should arrive in about fifty minutes, with a number to call to reschedule."></video></div>
+          </div>
+          <figcaption>
+            <div class="stage-steps two">
+              <div class="stage-step" id="stage-confirm">
+                <span class="stage-num">4</span><strong>Confirm, from the field.</strong>
+                <span class="stage-side">Technician &middot; mobile &middot; level 3, one-tap confirm</span>
+                On the phone the change arrives as a notification, then a
+                card: what the job is, why it came to you, where it is, and
+                one tap &mdash; Accept. The technician decides last, because
+                the technician is the one who has to drive. That tap, not the
+                dispatcher&rsquo;s, releases the next step.
+              </div>
+              <div class="stage-step" id="stage-customer">
+                <span class="stage-num">5</span><strong>Tell the customer.</strong>
+                <span class="stage-side">Customer &middot; SMS &middot; level 4, act</span>
+                Policy allows this message to go out unattended and the person
+                it depended on has already acted, so the agent sends it: who
+                is coming, when, and how to reschedule. On the board the
+                dispatcher reads &ldquo;Jim has accepted&rdquo;. Nobody made
+                a phone call.
+              </div>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+      <p>The other moments on the blueprint were redesigned the same way.
+      In the evening brief the agent proposes the day and the technician
+      glances. In on-site capture the agent drafts the record from voice or
+      photo and the technician confirms. At close the agent checks what is
+      missing, the technician decides it is done, and the board updates
+      without a phone call. Different balances of the same two verbs
+      &mdash; which is the point. The framework is the design; the screens
+      are instances of it.</p>
+
+      <h2>What I learned</h2>
+      <p>Redesigning a live product is its own discipline. The research was
+      done; the work was to honour it &mdash; to take findings that had sat
+      in a journey map and a blueprint and make the app behave like them. Most of the value
+      came from restraint: removing steps, exposing the one piece of
+      context a technician needed at that moment, and making the
+      system&rsquo;s state honest so people stopped working around it.</p>
+      <p>The agent exploration taught me to start from the service, not the
+      model, and to settle the framework before the screens: decide, moment
+      by moment, who proposes and who decides, then let each screen be an
+      instance of that. Putting an agent on both sides of the loop, with a
+      person deciding, was the only version that respected how the work is
+      actually done &mdash; and it is the version I would build first.</p>
+    </article>
+
+    <nav class="case-nav" aria-label="Case studies">
+      <a href="case-team.html"><span class="dir">Previous case</span>Building the system behind a high-performing design team</a>
+      <a class="next" href="case-japan.html"><span class="dir">Next case</span>Japan Invoice Summary: faster generation without losing financial control</a>
+    </nav>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Boyi Yang</p>
+      <div class="foot-links">
+        <a href="mailto:byang03@gmail.com">byang03@gmail.com</a>
+        <a href="https://www.linkedin.com/in/yangboyi/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+
+  <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"></button>
+  <script src="script.js?v=20261031a"></script>
+</body>
+</html>
