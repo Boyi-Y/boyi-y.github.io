@@ -50,5 +50,3 @@ media/FSM/*.mov
 fsm-blueprint-figma-make-prompt.md
 # FSM cover source (served copy is media/FSM/fsm-thumb.jpg)
 media/FSM/Cover thumbnail FSM.png
-# FSM agent blueprint export — not on the page yet; remove this line when it is embedded
-media/FSM/service-blueprint-agent@2x.png
